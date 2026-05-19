@@ -1,0 +1,8 @@
+interface:
+  display_name: "Check Please"
+  short_description: "把 token 用量打印成 ASCII 小票"
+  brand_color: "#111111"
+  default_prompt: "Use $check-please when the user asks for a token receipt, token bill, usage receipt, cost receipt, token 小票, AI 用量帳單, 繁體中文 token 小票, 廣東話 token 小票, or asks to print this conversation's token/context usage as a shareable artifact. In chat, return receipt-only: one fenced code block containing the full receipt and no prefatory or trailing explanation. If the user asks for English, 繁體中文, or 廣東話 receipt, switch the receipt language to en, zh-TW, or cantonese accordingly. Use the current software's own conversation data source; do not guess across another software's logs. Use terminal printing only when the user explicitly asks for terminal output."
+
+policy:
+  allow_implicit_invocation: true

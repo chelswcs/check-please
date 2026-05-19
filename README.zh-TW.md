@@ -1,0 +1,84 @@
+<div align="center">
+  <p>
+    <a href="./README.md">English</a> |
+    <a href="./README.zh-TW.md">繁體中文</a> |
+    <a href="./README.cantonese.md">Cantonese</a>
+  </p>
+  <h1>check-please</h1>
+  <p><strong>把 AI 用量，印成一張自帶補刀的小票。</strong></p>
+</div>
+
+## 這是什麼
+
+`check-please` 會把本次 AI 對話的 token / context 用量，整理成一張 monospace 熱敏紙小票。
+
+它不是儀表板，也不是試算表。它優先讀本機真實日誌，再依照 `references/pricing.json` 的價格表估算成本；對不上價格時會明確顯示未映射，不會亂編金額。
+
+## 繁體中文與 Cantonese
+
+目前 CLI 支援三種語言：
+
+```bash
+python3 scripts/check_please.py --language en
+python3 scripts/check_please.py --language zh-TW
+python3 scripts/check_please.py --language cantonese
+```
+
+`--language zh` 是繁體中文捷徑，會被正規化成 `zh-TW`；這個專案不再輸出簡體中文版本。
+
+HTML 版本也會同時產生 `EN / 繁中 / 廣東話` 切換，不需要重新輸出檔案。
+
+## 快速使用
+
+```bash
+python3 scripts/check_please.py --agent-tool codex --chat-reply --language zh-TW
+python3 scripts/check_please.py --agent-tool claude-code --chat-reply --language zh-TW
+python3 scripts/check_please.py --agent-tool kimi-code --chat-reply --language zh-TW
+python3 scripts/check_please.py --agent-tool opencode --chat-reply --language zh-TW
+```
+
+手動資料範例：
+
+```bash
+python3 scripts/check_please.py \
+  --provider anthropic \
+  --agent-tool claude-code \
+  --model claude-sonnet-4.5 \
+  --input-tokens 12487 \
+  --cached-input-tokens 8742 \
+  --cache-write-tokens 1024 \
+  --output-tokens 3215 \
+  --language zh-TW
+```
+
+## 觸發語
+
+- `token receipt`
+- `token 小票`
+- `AI 用量帳單`
+- `把這次對話打成小票`
+- `查看本次對話 Token 消耗`
+- `繁體中文 token 小票`
+- `用繁體中文出小票`
+
+## 可列印 HTML
+
+```bash
+python3 scripts/check_please.py --agent-tool claude-code --output html --write ./receipt.html --language zh-TW
+```
+
+打開 `receipt.html` 後可以直接列印。若使用 `--chat-reply`，工具會自動寫出 `/tmp/check-please.html` 並在回覆底部附上連結。
+
+## 修改文案
+
+繁體中文與廣東話的 footer 句庫放在 `check_please/footer_copy.json`。
+
+想調語氣時，直接改 `zh-TW` 或 `cantonese` 底下的 `snarky`、`dry`、`encouraging` 分組；程式會依照本次對話主題選用 `visual`、`pricing`、`debug`、`shipping`、`iteration`、`reasoning`、`context` 或 `default`。
+
+## 驗證
+
+修改後請至少跑：
+
+```bash
+python3 scripts/validate_receipt.py
+```

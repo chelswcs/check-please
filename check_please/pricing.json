@@ -1,0 +1,732 @@
+{
+  "checked_at": "2026-04-25",
+  "currency": "USD",
+  "unit": "per_1m_tokens",
+  "notes": [
+    "Prices are estimates from official provider pricing pages. They are not billing records.",
+    "Per-entry currency overrides the top-level currency. CNY entries render as CNY ESTIMATE.",
+    "Cached input uses the official cache-hit or cached-input rate when the source publishes one; otherwise it falls back to normal input price.",
+    "Anthropic and MiniMax cache write uses the listed cache-write rate when cache_write_tokens is supplied.",
+    "Tiered context prices use the common short-context or base tier unless the entry rate_note says otherwise.",
+    "Kimi direct entries use Moonshot/Kimi public pricing. GLM entries use Alibaba Model Studio public China mainland list prices because the Zhipu price page is JavaScript-rendered in the checked source.",
+    "MiMo entries use OpenRouter route pricing; Xiaomi's official MiMo page confirms Token Plan and model availability but did not expose static unit prices in the checked source."
+  ],
+  "models": [
+    {
+      "provider": "openai",
+      "model": "gpt-5.5",
+      "aliases": ["gpt-5.5", "gpt 5.5"],
+      "input_per_million": 5.0,
+      "cached_input_per_million": 0.5,
+      "output_per_million": 30.0,
+      "source_url": "https://openai.com/api/pricing/",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.4",
+      "aliases": ["gpt-5.4", "gpt 5.4"],
+      "input_per_million": 2.5,
+      "cached_input_per_million": 0.25,
+      "output_per_million": 15.0,
+      "source_url": "https://openai.com/api/pricing/",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.4-mini",
+      "aliases": ["gpt-5.4-mini", "gpt 5.4 mini", "gpt-5.4 mini"],
+      "input_per_million": 0.75,
+      "cached_input_per_million": 0.075,
+      "output_per_million": 4.5,
+      "source_url": "https://openai.com/api/pricing/",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.4-nano",
+      "aliases": ["gpt-5.4-nano", "gpt 5.4 nano", "gpt-5.4 nano"],
+      "input_per_million": 0.25,
+      "cached_input_per_million": 0.025,
+      "output_per_million": 2.0,
+      "source_url": "https://openai.com/api/pricing/",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.4-pro",
+      "aliases": ["gpt-5.4-pro", "gpt 5.4 pro", "gpt-5.4 pro"],
+      "input_per_million": 20.0,
+      "output_per_million": 120.0,
+      "source_url": "https://openai.com/api/pricing/",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.3-codex",
+      "aliases": ["gpt-5.3-codex", "gpt 5.3 codex", "gpt-5.3 codex"],
+      "input_per_million": 1.75,
+      "cached_input_per_million": 0.175,
+      "output_per_million": 14.0,
+      "source_url": "https://platform.openai.com/docs/pricing",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "aliases": ["gpt-5.2", "gpt 5.2"],
+      "input_per_million": 1.75,
+      "cached_input_per_million": 0.175,
+      "output_per_million": 14.0,
+      "source_url": "https://platform.openai.com/docs/pricing",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2-codex",
+      "aliases": ["gpt-5.2-codex", "gpt 5.2 codex", "gpt-5.2 codex"],
+      "input_per_million": 1.75,
+      "cached_input_per_million": 0.175,
+      "output_per_million": 14.0,
+      "source_url": "https://platform.openai.com/docs/pricing",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.1",
+      "aliases": ["gpt-5.1", "gpt 5.1"],
+      "input_per_million": 1.25,
+      "cached_input_per_million": 0.125,
+      "output_per_million": 10.0,
+      "source_url": "https://platform.openai.com/docs/pricing",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5",
+      "aliases": ["gpt-5", "gpt 5"],
+      "input_per_million": 1.25,
+      "cached_input_per_million": 0.125,
+      "output_per_million": 10.0,
+      "source_url": "https://platform.openai.com/docs/pricing",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5-mini",
+      "aliases": ["gpt-5-mini", "gpt 5 mini"],
+      "input_per_million": 0.25,
+      "cached_input_per_million": 0.025,
+      "output_per_million": 2.0,
+      "source_url": "https://platform.openai.com/docs/pricing",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5-nano",
+      "aliases": ["gpt-5-nano", "gpt 5 nano"],
+      "input_per_million": 0.05,
+      "cached_input_per_million": 0.005,
+      "output_per_million": 0.4,
+      "source_url": "https://platform.openai.com/docs/pricing",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.1-codex",
+      "aliases": ["gpt-5.1-codex", "gpt 5.1 codex", "gpt-5.1-codex-max"],
+      "input_per_million": 1.25,
+      "cached_input_per_million": 0.125,
+      "output_per_million": 10.0,
+      "source_url": "https://platform.openai.com/docs/pricing",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5-codex",
+      "aliases": ["gpt-5-codex", "gpt 5 codex"],
+      "input_per_million": 1.25,
+      "cached_input_per_million": 0.125,
+      "output_per_million": 10.0,
+      "source_url": "https://platform.openai.com/docs/pricing",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.1-codex-mini",
+      "aliases": ["gpt-5.1-codex-mini", "gpt 5.1 codex mini"],
+      "input_per_million": 0.25,
+      "cached_input_per_million": 0.025,
+      "output_per_million": 2.0,
+      "source_url": "https://platform.openai.com/docs/pricing",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "openai",
+      "model": "codex-mini-latest",
+      "aliases": ["codex-mini-latest", "codex mini latest", "codex-mini"],
+      "input_per_million": 1.5,
+      "cached_input_per_million": 0.375,
+      "output_per_million": 6.0,
+      "source_url": "https://platform.openai.com/docs/pricing",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-4.1",
+      "aliases": ["gpt-4.1", "gpt 4.1"],
+      "input_per_million": 2.0,
+      "cached_input_per_million": 0.5,
+      "output_per_million": 8.0,
+      "source_url": "https://platform.openai.com/docs/pricing",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-4.1-mini",
+      "aliases": ["gpt-4.1-mini", "gpt 4.1 mini"],
+      "input_per_million": 0.4,
+      "cached_input_per_million": 0.1,
+      "output_per_million": 1.6,
+      "source_url": "https://platform.openai.com/docs/pricing",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-4.1-nano",
+      "aliases": ["gpt-4.1-nano", "gpt 4.1 nano"],
+      "input_per_million": 0.1,
+      "cached_input_per_million": 0.025,
+      "output_per_million": 0.4,
+      "source_url": "https://platform.openai.com/docs/pricing",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-4o",
+      "aliases": ["gpt-4o", "gpt 4o"],
+      "input_per_million": 2.5,
+      "cached_input_per_million": 1.25,
+      "output_per_million": 10.0,
+      "source_url": "https://platform.openai.com/docs/pricing",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-4o-mini",
+      "aliases": ["gpt-4o-mini", "gpt 4o mini"],
+      "input_per_million": 0.15,
+      "cached_input_per_million": 0.075,
+      "output_per_million": 0.6,
+      "source_url": "https://platform.openai.com/docs/pricing",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "openai",
+      "model": "o3",
+      "aliases": ["o3"],
+      "input_per_million": 2.0,
+      "cached_input_per_million": 0.5,
+      "output_per_million": 8.0,
+      "source_url": "https://platform.openai.com/docs/pricing",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "openai",
+      "model": "o4-mini",
+      "aliases": ["o4-mini", "o4 mini"],
+      "input_per_million": 1.1,
+      "cached_input_per_million": 0.275,
+      "output_per_million": 4.4,
+      "source_url": "https://platform.openai.com/docs/pricing",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-opus-4.7",
+      "aliases": ["claude-opus-4.7", "claude opus 4.7", "opus 4.7"],
+      "input_per_million": 5.0,
+      "cache_write_5m_per_million": 6.25,
+      "cached_input_per_million": 0.5,
+      "output_per_million": 25.0,
+      "source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-opus-4.6",
+      "aliases": ["claude-opus-4.6", "claude opus 4.6", "opus 4.6"],
+      "input_per_million": 5.0,
+      "cache_write_5m_per_million": 6.25,
+      "cached_input_per_million": 0.5,
+      "output_per_million": 25.0,
+      "source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-opus-4.5",
+      "aliases": ["claude-opus-4.5", "claude opus 4.5", "opus 4.5"],
+      "input_per_million": 5.0,
+      "cache_write_5m_per_million": 6.25,
+      "cached_input_per_million": 0.5,
+      "output_per_million": 25.0,
+      "source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-opus-4.1",
+      "aliases": ["claude-opus-4.1", "claude opus 4.1", "opus 4.1"],
+      "input_per_million": 15.0,
+      "cache_write_5m_per_million": 18.75,
+      "cached_input_per_million": 1.5,
+      "output_per_million": 75.0,
+      "source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4.6",
+      "aliases": ["claude-sonnet-4.6", "claude sonnet 4.6", "sonnet 4.6"],
+      "input_per_million": 3.0,
+      "cache_write_5m_per_million": 3.75,
+      "cached_input_per_million": 0.3,
+      "output_per_million": 15.0,
+      "source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4.5",
+      "aliases": ["claude-sonnet-4.5", "claude sonnet 4.5", "sonnet 4.5"],
+      "input_per_million": 3.0,
+      "cache_write_5m_per_million": 3.75,
+      "cached_input_per_million": 0.3,
+      "output_per_million": 15.0,
+      "source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4",
+      "aliases": ["claude-sonnet-4", "claude sonnet 4", "sonnet 4"],
+      "input_per_million": 3.0,
+      "cache_write_5m_per_million": 3.75,
+      "cached_input_per_million": 0.3,
+      "output_per_million": 15.0,
+      "source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-3.7-sonnet",
+      "aliases": ["claude-3.7-sonnet", "claude 3.7 sonnet", "sonnet 3.7"],
+      "input_per_million": 3.0,
+      "cache_write_5m_per_million": 3.75,
+      "cached_input_per_million": 0.3,
+      "output_per_million": 15.0,
+      "source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-haiku-4.5",
+      "aliases": ["claude-haiku-4.5", "claude haiku 4.5", "haiku 4.5"],
+      "input_per_million": 1.0,
+      "cache_write_5m_per_million": 1.25,
+      "cached_input_per_million": 0.1,
+      "output_per_million": 5.0,
+      "source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-3.5-haiku",
+      "aliases": ["claude-3.5-haiku", "claude 3.5 haiku", "haiku 3.5"],
+      "input_per_million": 0.8,
+      "cache_write_5m_per_million": 1.0,
+      "cached_input_per_million": 0.08,
+      "output_per_million": 4.0,
+      "source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3.1-pro-preview",
+      "aliases": ["gemini-3.1-pro-preview", "gemini 3.1 pro preview", "gemini-3-pro-preview"],
+      "input_per_million": 2.0,
+      "cached_input_per_million": 0.2,
+      "output_per_million": 12.0,
+      "rate_note": "<=200K tier",
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-flash-preview",
+      "aliases": ["gemini-3-flash-preview", "gemini 3 flash preview", "gemini-3.1-flash-preview"],
+      "input_per_million": 0.3,
+      "cached_input_per_million": 0.03,
+      "output_per_million": 2.5,
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3.1-flash-lite-preview",
+      "aliases": ["gemini-3.1-flash-lite-preview", "gemini 3.1 flash lite preview"],
+      "input_per_million": 0.25,
+      "cached_input_per_million": 0.025,
+      "output_per_million": 1.5,
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "google",
+      "model": "gemini-2.5-pro",
+      "aliases": ["gemini-2.5-pro", "gemini 2.5 pro"],
+      "input_per_million": 1.25,
+      "cached_input_per_million": 0.125,
+      "output_per_million": 10.0,
+      "rate_note": "<=200K tier",
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "google",
+      "model": "gemini-2.5-flash",
+      "aliases": ["gemini-2.5-flash", "gemini 2.5 flash"],
+      "input_per_million": 0.3,
+      "cached_input_per_million": 0.03,
+      "output_per_million": 2.5,
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "google",
+      "model": "gemini-2.5-flash-lite",
+      "aliases": ["gemini-2.5-flash-lite", "gemini 2.5 flash lite"],
+      "input_per_million": 0.1,
+      "cached_input_per_million": 0.01,
+      "output_per_million": 0.4,
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "google",
+      "model": "gemini-2.0-flash",
+      "aliases": ["gemini-2.0-flash", "gemini 2.0 flash"],
+      "input_per_million": 0.1,
+      "cached_input_per_million": 0.025,
+      "output_per_million": 0.4,
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "google",
+      "model": "gemini-2.0-flash-lite",
+      "aliases": ["gemini-2.0-flash-lite", "gemini 2.0 flash lite"],
+      "input_per_million": 0.075,
+      "output_per_million": 0.3,
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "moonshot",
+      "model": "kimi-k2.6",
+      "aliases": ["kimi-k2.6", "kimi k2.6", "kimi-latest"],
+      "input_per_million": 0.95,
+      "cached_input_per_million": 0.16,
+      "output_per_million": 4.0,
+      "source_url": "https://platform.kimi.ai/docs/pricing/chat-k26",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "moonshot",
+      "model": "kimi-k2.5",
+      "aliases": ["kimi-k2.5", "kimi k2.5"],
+      "input_per_million": 0.6,
+      "cached_input_per_million": 0.1,
+      "output_per_million": 3.0,
+      "source_url": "https://platform.kimi.ai/docs/pricing/chat-k25",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "moonshot",
+      "model": "kimi-k2",
+      "aliases": ["kimi-k2", "kimi k2", "kimi-k2-0905", "kimi-k2-0905-preview"],
+      "input_per_million": 0.6,
+      "cached_input_per_million": 0.15,
+      "output_per_million": 2.5,
+      "source_url": "https://platform.kimi.ai/docs/pricing/chat-k2",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "aliases": ["deepseek-v4-flash", "deepseek chat", "deepseek-chat", "deepseek reasoner", "deepseek-reasoner"],
+      "input_per_million": 0.14,
+      "cached_input_per_million": 0.028,
+      "output_per_million": 0.28,
+      "source_url": "https://api-docs.deepseek.com/quick_start/pricing",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "deepseek",
+      "model": "deepseek-v4-pro",
+      "aliases": ["deepseek-v4-pro", "deepseek v4 pro"],
+      "input_per_million": 1.74,
+      "cached_input_per_million": 0.145,
+      "output_per_million": 3.48,
+      "source_url": "https://api-docs.deepseek.com/quick_start/pricing",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "minimax",
+      "model": "minimax-m2.7",
+      "aliases": ["minimax-m2.7", "m2.7", "minimax m2.7"],
+      "input_per_million": 0.3,
+      "cache_write_5m_per_million": 0.375,
+      "cached_input_per_million": 0.06,
+      "output_per_million": 1.2,
+      "source_url": "https://platform.minimax.io/docs/guides/pricing-paygo",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "minimax",
+      "model": "minimax-m2.7-high-speed",
+      "aliases": ["minimax-m2.7-high-speed", "m2.7-high-speed", "minimax m2.7 high speed"],
+      "input_per_million": 0.6,
+      "cache_write_5m_per_million": 0.375,
+      "cached_input_per_million": 0.06,
+      "output_per_million": 2.4,
+      "source_url": "https://platform.minimax.io/docs/guides/pricing-paygo",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "minimax",
+      "model": "minimax-m2.5",
+      "aliases": ["minimax-m2.5", "m2.5", "minimax m2.5"],
+      "input_per_million": 0.3,
+      "cache_write_5m_per_million": 0.375,
+      "cached_input_per_million": 0.03,
+      "output_per_million": 1.2,
+      "source_url": "https://platform.minimax.io/docs/guides/pricing-paygo",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "minimax",
+      "model": "minimax-m2.5-high-speed",
+      "aliases": ["minimax-m2.5-high-speed", "m2.5-high-speed", "minimax m2.5 high speed"],
+      "input_per_million": 0.6,
+      "cache_write_5m_per_million": 0.375,
+      "cached_input_per_million": 0.03,
+      "output_per_million": 2.4,
+      "source_url": "https://platform.minimax.io/docs/guides/pricing-paygo",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "minimax",
+      "model": "minimax-m2-her",
+      "aliases": ["minimax-m2-her", "m2-her", "minimax m2 her"],
+      "input_per_million": 0.3,
+      "output_per_million": 1.2,
+      "source_url": "https://platform.minimax.io/docs/guides/pricing-paygo",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "xiaomi",
+      "model": "xiaomi/mimo-v2.5-pro",
+      "aliases": ["xiaomi/mimo-v2.5-pro", "mimo-v2.5-pro", "mimo v2.5 pro", "xiaomi mimo v2.5 pro"],
+      "input_per_million": 1.0,
+      "output_per_million": 3.0,
+      "rate_note": "OPENROUTER",
+      "source_url": "https://openrouter.ai/xiaomi/mimo-v2.5-pro",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "xiaomi",
+      "model": "xiaomi/mimo-v2.5",
+      "aliases": ["xiaomi/mimo-v2.5", "mimo-v2.5", "mimo v2.5", "xiaomi mimo v2.5"],
+      "input_per_million": 0.4,
+      "output_per_million": 2.0,
+      "rate_note": "OPENROUTER",
+      "source_url": "https://openrouter.ai/xiaomi/mimo-v2.5",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "xiaomi",
+      "model": "xiaomi/mimo-v2-pro",
+      "aliases": ["xiaomi/mimo-v2-pro", "mimo-v2-pro", "mimo v2 pro", "xiaomi mimo v2 pro"],
+      "input_per_million": 1.0,
+      "output_per_million": 3.0,
+      "rate_note": "OPENROUTER",
+      "source_url": "https://openrouter.ai/xiaomi/mimo-v2-pro",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "xiaomi",
+      "model": "xiaomi/mimo-v2-omni",
+      "aliases": ["xiaomi/mimo-v2-omni", "mimo-v2-omni", "mimo v2 omni", "xiaomi mimo v2 omni"],
+      "input_per_million": 0.4,
+      "output_per_million": 2.0,
+      "rate_note": "OPENROUTER",
+      "source_url": "https://openrouter.ai/xiaomi/mimo-v2-omni",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "xiaomi",
+      "model": "xiaomi/mimo-v2-flash",
+      "aliases": ["xiaomi/mimo-v2-flash", "mimo-v2-flash", "mimo v2 flash", "xiaomi mimo v2 flash"],
+      "input_per_million": 0.09,
+      "output_per_million": 0.29,
+      "rate_note": "OPENROUTER",
+      "source_url": "https://openrouter.ai/xiaomi/mimo-v2-flash/pricing",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "alibaba",
+      "model": "qwen3.6-max-preview",
+      "aliases": ["qwen3.6-max-preview", "qwen3.6 max preview", "qwen-max-latest"],
+      "currency": "CNY",
+      "input_per_million": 9.0,
+      "output_per_million": 54.0,
+      "rate_note": "CN MAINLAND",
+      "source_url": "https://help.aliyun.com/zh/model-studio/models",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "alibaba",
+      "model": "qwen3.6-plus",
+      "aliases": ["qwen3.6-plus", "qwen3.6 plus", "qwen-plus-latest"],
+      "currency": "CNY",
+      "input_per_million": 2.0,
+      "output_per_million": 12.0,
+      "rate_note": "CN MAINLAND",
+      "source_url": "https://help.aliyun.com/zh/model-studio/models",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "alibaba",
+      "model": "qwen3.6-flash",
+      "aliases": ["qwen3.6-flash", "qwen3.6 flash", "qwen-flash-latest"],
+      "currency": "CNY",
+      "input_per_million": 1.2,
+      "output_per_million": 7.2,
+      "rate_note": "CN MAINLAND",
+      "source_url": "https://help.aliyun.com/zh/model-studio/models",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "alibaba",
+      "model": "qwen3-max",
+      "aliases": ["qwen3-max", "qwen3 max", "qwen-max"],
+      "currency": "CNY",
+      "input_per_million": 2.5,
+      "output_per_million": 10.0,
+      "rate_note": "CN MAINLAND",
+      "source_url": "https://help.aliyun.com/zh/model-studio/models",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "alibaba",
+      "model": "qwen-plus",
+      "aliases": ["qwen-plus", "qwen plus", "qwen3-plus"],
+      "currency": "CNY",
+      "input_per_million": 0.8,
+      "output_per_million": 2.0,
+      "rate_note": "CN MAINLAND",
+      "source_url": "https://help.aliyun.com/zh/model-studio/models",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "alibaba",
+      "model": "qwen-flash",
+      "aliases": ["qwen-flash", "qwen flash", "qwen3-flash"],
+      "currency": "CNY",
+      "input_per_million": 0.15,
+      "output_per_million": 1.5,
+      "rate_note": "CN MAINLAND",
+      "source_url": "https://help.aliyun.com/zh/model-studio/models",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "alibaba",
+      "model": "qwen-turbo",
+      "aliases": ["qwen-turbo", "qwen turbo", "qwen3-turbo"],
+      "currency": "CNY",
+      "input_per_million": 0.3,
+      "output_per_million": 0.6,
+      "rate_note": "NO-THINK CN",
+      "source_url": "https://help.aliyun.com/zh/model-studio/models",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "zhipu",
+      "model": "glm-5.1",
+      "aliases": ["glm-5.1", "glm 5.1", "glm-5-1", "z-ai/glm-5.1", "zai/glm-5.1"],
+      "currency": "CNY",
+      "input_per_million": 6.0,
+      "output_per_million": 24.0,
+      "rate_note": "ALIYUN CN <=32K",
+      "source_url": "https://help.aliyun.com/zh/model-studio/models",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "zhipu",
+      "model": "glm-5",
+      "aliases": ["glm-5", "glm 5", "glm-5-base", "z-ai/glm-5", "zai/glm-5"],
+      "currency": "CNY",
+      "input_per_million": 4.0,
+      "output_per_million": 18.0,
+      "rate_note": "ALIYUN CN <=32K",
+      "source_url": "https://help.aliyun.com/zh/model-studio/models",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "zhipu",
+      "model": "glm-4.7",
+      "aliases": ["glm-4.7", "glm 4.7", "glm-4-7", "z-ai/glm-4.7", "zai/glm-4.7"],
+      "currency": "CNY",
+      "input_per_million": 3.0,
+      "output_per_million": 14.0,
+      "rate_note": "ALIYUN CN <=32K",
+      "source_url": "https://help.aliyun.com/zh/model-studio/models",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "zhipu",
+      "model": "glm-4.6",
+      "aliases": ["glm-4.6", "glm 4.6", "glm-4-6", "z-ai/glm-4.6", "zai/glm-4.6"],
+      "currency": "CNY",
+      "input_per_million": 3.0,
+      "output_per_million": 14.0,
+      "rate_note": "ALIYUN CN <=32K",
+      "source_url": "https://help.aliyun.com/zh/model-studio/models",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "zhipu",
+      "model": "glm-4.5",
+      "aliases": ["glm-4.5", "glm 4.5", "glm-4-5", "z-ai/glm-4.5", "zai/glm-4.5"],
+      "currency": "CNY",
+      "input_per_million": 3.0,
+      "output_per_million": 14.0,
+      "rate_note": "ALIYUN CN <=32K",
+      "source_url": "https://help.aliyun.com/zh/model-studio/models",
+      "source_checked_at": "2026-04-25"
+    },
+    {
+      "provider": "zhipu",
+      "model": "glm-4.5-air",
+      "aliases": ["glm-4.5-air", "glm 4.5 air", "glm-4-5-air", "z-ai/glm-4.5-air", "zai/glm-4.5-air"],
+      "currency": "CNY",
+      "input_per_million": 0.8,
+      "output_per_million": 6.0,
+      "rate_note": "ALIYUN CN <=32K",
+      "source_url": "https://help.aliyun.com/zh/model-studio/models",
+      "source_checked_at": "2026-04-25"
+    }
+  ]
+}

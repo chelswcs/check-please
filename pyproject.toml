@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "check-please"
+version = "0.1.0"
+description = "Turn AI token usage into a receipt with a punchline."
+readme = "README.md"
+requires-python = ">=3.9"
+
+[project.scripts]
+check-please = "check_please.cli:main"
+
+[tool.setuptools]
+packages = ["check_please"]
+
+[tool.setuptools.package-data]
+check_please = ["assets/*.png", "pricing.json", "footer_copy.json"]
