@@ -8,3 +8,8 @@ out/
 remotion-studio-open.png
 .cursor/
 .claude/
+web/.next/
+web/out/
+web/node_modules/
+web/tsconfig.tsbuildinfo
+web/.vercel/

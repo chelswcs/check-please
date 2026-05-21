@@ -1,0 +1,128 @@
+import type { ReceiptPayload } from "./receipt";
+
+export const sampleReceipt: ReceiptPayload = {
+  agentTool: "claude-code",
+  receiptId: "CC_20260521_135808_965BE3",
+  barcode: "|||| ||||| ||| |||||||||||  |||",
+  languages: {
+    en: {
+      language: "en",
+      logoLabel: "CLAUDE CODE",
+      thanksLine: "THANK YOU FOR CODING WITH Claude",
+      receiptIdLine: "RECEIPT #: CC_20260521_135808_965BE3",
+      dateLine: "DATE: 2026-05-21 13:58:08",
+      summaryRows: [
+        { label: "PROVIDER", value: "ANTHROPIC" },
+        { label: "MODEL", value: "claude-sonnet-4.5" },
+        { label: "CONTEXT USED", value: "12,487" },
+      ],
+      itemHeader: { label: "ITEM", value: "TOKENS" },
+      tokenRows: [
+        { label: "Input Tokens", value: "12,487" },
+        { label: "Output Tokens", value: "3,215" },
+        { label: "Cache Read Tokens", value: "8,742" },
+        { label: "Reasoning Tokens", value: "128" },
+        { label: "Cache Write Tokens", value: "1,024" },
+      ],
+      totalRow: { label: "TOTAL", value: "15,702 TOKENS" },
+      pricingRows: [
+        { label: "USD ESTIMATE", value: "$0.064771" },
+        { label: "PRICE", value: "claude-sonnet-4.5" },
+        { label: "PRICE DATE", value: "2026-04-25" },
+      ],
+      footer: "REASONING WAS BILLED SEPARATELY.",
+    },
+    "zh-TW": {
+      language: "zh-TW",
+      logoLabel: "CLAUDE CODE",
+      thanksLine: "感謝使用 Claude",
+      receiptIdLine: "收據號碼: CC_20260521_135808_965BE3",
+      dateLine: "日期: 2026-05-21 13:58:08",
+      summaryRows: [
+        { label: "供應商", value: "ANTHROPIC" },
+        { label: "模型", value: "claude-sonnet-4.5" },
+        { label: "已用上下文", value: "12,487" },
+      ],
+      itemHeader: { label: "項目", value: "TOKEN" },
+      tokenRows: [
+        { label: "輸入 Tokens", value: "12,487" },
+        { label: "輸出 Tokens", value: "3,215" },
+        { label: "快取讀取", value: "8,742" },
+        { label: "推理 Tokens", value: "128" },
+        { label: "快取寫入", value: "1,024" },
+      ],
+      totalRow: { label: "總計", value: "15,702 Tokens" },
+      pricingRows: [
+        { label: "USD 預估", value: "$0.064771" },
+        { label: "價格對應", value: "claude-sonnet-4.5" },
+        { label: "價格日期", value: "2026-04-25" },
+      ],
+      footer: "最後一版已驗收，退換無效。",
+    },
+    cantonese: {
+      language: "cantonese",
+      logoLabel: "CLAUDE CODE",
+      thanksLine: "多謝使用 Claude",
+      receiptIdLine: "單號: CC_20260521_135808_965BE3",
+      dateLine: "日期: 2026-05-21 13:58:08",
+      summaryRows: [
+        { label: "供應商", value: "ANTHROPIC" },
+        { label: "模型", value: "claude-sonnet-4.5" },
+        { label: "已用上下文", value: "12,487" },
+      ],
+      itemHeader: { label: "項目", value: "TOKEN" },
+      tokenRows: [
+        { label: "輸入 Tokens", value: "12,487" },
+        { label: "輸出 Tokens", value: "3,215" },
+        { label: "快取讀取", value: "8,742" },
+        { label: "推理 Tokens", value: "128" },
+        { label: "快取寫入", value: "1,024" },
+      ],
+      totalRow: { label: "總數", value: "15,702 Tokens" },
+      pricingRows: [
+        { label: "USD 估算", value: "$0.064771" },
+        { label: "價格對應", value: "claude-sonnet-4.5" },
+        { label: "價格日期", value: "2026-04-25" },
+      ],
+      footer: "排版鎖定，此乃機印單據毋須簽名。",
+    },
+  },
+  tip: {
+    en: {
+      subtotal: "$0.064771",
+      subtotalLabel: "SUBTOTAL",
+      tipLabel: "TIP",
+      grandTotalLabel: "GRAND TOTAL",
+      options: [
+        { percent: 15, tipAmount: "$0.009716", grandTotal: "$0.074487", footer: "GENEROSITY DETECTED. THE REGISTER FELT THAT ONE." },
+        { percent: 18, tipAmount: "$0.011659", grandTotal: "$0.076430", footer: "NOW SETTLED. GENEROSITY RECORDED." },
+        { percent: 20, tipAmount: "$0.012954", grandTotal: "$0.077725", footer: "THE EXTRA EXCEEDED NORMAL CHECKOUT." },
+        { percent: 25, tipAmount: "$0.016193", grandTotal: "$0.080964", footer: "THIS RECEIPT WILL REMEMBER YOU FONDLY." },
+      ],
+    },
+    "zh-TW": {
+      subtotal: "$0.064771",
+      subtotalLabel: "小計",
+      tipLabel: "小費",
+      grandTotalLabel: "應付總額",
+      options: [
+        { percent: 15, tipAmount: "$0.009716", grandTotal: "$0.074487", footer: "這筆一進來，帳單也學會看場合。" },
+        { percent: 18, tipAmount: "$0.011659", grandTotal: "$0.076430", footer: "這一下很大方，收銀台都不好意思再臭臉。" },
+        { percent: 20, tipAmount: "$0.012954", grandTotal: "$0.077725", footer: "這筆下去，收據都想站起來敬禮。" },
+        { percent: 25, tipAmount: "$0.016193", grandTotal: "$0.080964", footer: "出手太明顯，連總額都變得有禮貌。" },
+      ],
+    },
+    cantonese: {
+      subtotal: "$0.064771",
+      subtotalLabel: "小計",
+      tipLabel: "貼士",
+      grandTotalLabel: "埋單總數",
+      options: [
+        { percent: 15, tipAmount: "$0.009716", grandTotal: "$0.074487", footer: "心意唔算高，張單即刻識得笑。" },
+        { percent: 18, tipAmount: "$0.011659", grandTotal: "$0.076430", footer: "收銀台有分寸，知道你係識貨人。" },
+        { percent: 20, tipAmount: "$0.012954", grandTotal: "$0.077725", footer: "呢一下夠大方，張單都識轉腔。" },
+        { percent: 25, tipAmount: "$0.016193", grandTotal: "$0.080964", footer: "收銀台即刻轉方向，笑到連墨都發光。" },
+      ],
+    },
+  },
+};
