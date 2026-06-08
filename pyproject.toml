@@ -8,6 +8,7 @@ version = "0.1.0"
 description = "Turn AI token usage into a receipt with a punchline."
 readme = "README.md"
 requires-python = ">=3.9"
+license = { file = "LICENSE" }
 
 [project.scripts]
 check-please = "check_please.cli:main"

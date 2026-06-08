@@ -17,7 +17,8 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from check_please.data import find_codex_session_for_thread, newest_claude_usage_file, requested_agent_tool, runtime_agent_tool, runtime_claude_session_id, runtime_codex_thread_id, runtime_opencode_session_id  # noqa: E402
-from check_please.models import printable_receipt_char, visual_display_width  # noqa: E402
+from check_please.models import PriceEstimate, UsageSnapshot, printable_receipt_char, visual_display_width  # noqa: E402
+from check_please.render import auto_footer_line  # noqa: E402
 from check_please.share import decode_share_payload  # noqa: E402
 
 SCRIPT = ROOT / "scripts" / "check_please.py"
@@ -463,7 +464,7 @@ def main() -> int:
         "--conversation-summary", "再改一版 logo 對齊",
     )
     assert_receipt(claude_zh_tw, 48, ["CLAUDE CODE", "感謝使用 Claude", "收據號碼", "供應商", "總計", "USD 預估"], language="zh-TW")
-    assert any(word in claude_zh_tw for word in ("帳單", "費用", "代價", "預算", "錢")), "zh-TW footer should use traditional chinese"
+    assert any(line in claude_zh_tw for line in ("畫面對齊了", "這段 context", "看起來很貴", "間距修好了")), "zh-TW footer should come from localized copy"
 
     claude_cantonese = run_case(
         "--provider", "anthropic",
@@ -480,7 +481,7 @@ def main() -> int:
         "--conversation-summary", "再改一版 logo 對齊",
     )
     assert_receipt(claude_cantonese, 48, ["CLAUDE CODE", "多謝使用 Claude", "單號", "供應商", "總數", "USD 估算"], language="cantonese")
-    assert any(word in claude_cantonese for word in ("埋單", "荷包", "銀包", "條數", "唔", "咗", "帳單", "張單", "預算", "走位")), "cantonese footer should read like Cantonese"
+    assert any(line in claude_cantonese for line in ("畫面順", "有啲 context", "以前我冇得揀", "有批 token")), "cantonese footer should come from localized copy"
 
     trae = run_case(
         "--provider", "openai",
@@ -617,11 +618,29 @@ def main() -> int:
     visual_footer = extract_footer(visual_footer_case)
     pricing_footer = extract_footer(pricing_footer_case)
     assert visual_footer != pricing_footer, "different conversation summaries should not reuse the same footer"
-    assert any(word in " ".join(visual_footer) for word in ("LOGO", "LAYOUT", "PIXELS", "ALIGNMENT")), "visual summary should steer footer theme"
-    assert any(word in " ".join(pricing_footer) for word in ("PRICE", "BILL", "ESTIMATE", "RECEIPT")), "pricing summary should steer footer theme"
     assert "DOES NOT INCLUDE THIS RECEIPT" not in " ".join(visual_footer), "visual footer regressed to the old slot-filled formula"
     for line in visual_footer + pricing_footer:
         assert len(line) <= 40, f"footer line too long: {line!r}"
+
+    footer_rows = json.loads((ROOT / "check_please" / "footer_copy.json").read_text(encoding="utf-8"))["footer"]
+    footer_snapshot = UsageSnapshot(
+        provider="openai",
+        model="gpt-5.4",
+        input_tokens=12487,
+        cached_input_tokens=8742,
+        output_tokens=3215,
+        total_tokens=15702,
+    )
+    footer_estimate = PriceEstimate(status="priced", amount=0.1, model="gpt-5.4")
+    matched_row = {
+        "en": auto_footer_line(footer_snapshot, footer_estimate, "snarky", "en", "same row check"),
+        "zh-TW": auto_footer_line(footer_snapshot, footer_estimate, "snarky", "zh-TW", "same row check"),
+        "cantonese": auto_footer_line(footer_snapshot, footer_estimate, "snarky", "cantonese", "same row check"),
+    }
+    assert any(
+        all(row[lang] == matched_row[lang] for lang in ("en", "zh-TW", "cantonese"))
+        for row in footer_rows
+    ), "localized footer lines should stay aligned to the same source row"
 
     unknown = run_case(
         "--provider", "openai",

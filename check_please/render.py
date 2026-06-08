@@ -969,9 +969,19 @@ def auto_tip_footer_line(
 def load_footer_copy() -> dict[str, object]:
     with FOOTER_COPY_PATH.open("r", encoding="utf-8") as handle:
         data = json.load(handle)
-    if not isinstance(data, dict) or not isinstance(data.get("footer"), dict):
+    if not isinstance(data, dict) or not isinstance(data.get("footer"), (dict, list)):
         raise ValueError(f"Invalid footer copy data in {FOOTER_COPY_PATH}")
     return data
+
+
+def localized_footer_line(language: str, digest: int) -> str:
+    footer = load_footer_copy()["footer"]
+    if not isinstance(footer, list):
+        raise KeyError("Footer copy is not row-based")
+    rows = [row for row in footer if isinstance(row, dict) and isinstance(row.get(language), str)]
+    if not rows:
+        raise KeyError(f"Missing footer copy for language {language!r}")
+    return str(rows[(digest >> 14) % len(rows)][language])
 
 
 def localized_footer_candidates(language: str, style: str, theme: str) -> List[str]:
@@ -981,6 +991,12 @@ def localized_footer_candidates(language: str, style: str, theme: str) -> List[s
     language_copy = footer.get(language)
     if not isinstance(language_copy, dict):
         raise KeyError(f"Missing footer copy for language {language!r}")
+
+    candidates = language_copy.get(theme) or language_copy.get("default")
+    if isinstance(candidates, list) and all(isinstance(item, str) for item in candidates):
+        return candidates
+
+    # Backward compatibility for the older language -> tone -> category shape.
     style_copy = language_copy.get(style)
     if not isinstance(style_copy, dict):
         raise KeyError(f"Missing footer copy for {language!r}/{style!r}")
@@ -1028,15 +1044,16 @@ def fit_footer_text(text: str, width: int, language: str) -> str:
 
 def auto_footer_line(snapshot: UsageSnapshot, estimate: PriceEstimate, tone: str, language: str, hint: str = "") -> str:
     language = canonical_language(language)
-    key = f"{language}:{snapshot.provider}:{snapshot.model}:{snapshot.total_tokens}:{snapshot.cached_input_tokens}:{snapshot.reasoning_output_tokens}:{hint}:{tone}:{estimate.status}"
+    key = f"{snapshot.provider}:{snapshot.model}:{snapshot.total_tokens}:{snapshot.cached_input_tokens}:{snapshot.reasoning_output_tokens}:{hint}:{tone}:{estimate.status}"
     digest = int(hashlib.sha1(key.encode("utf-8")).hexdigest()[:8], 16)
+    try:
+        return localized_footer_line(language, digest)
+    except KeyError:
+        pass
+
     theme = footer_theme(snapshot, hint)
     style = footer_style(snapshot, tone, hint, digest, language)
     brand = product_name(snapshot).upper()
-    if language in {"zh-TW", "cantonese"}:
-        candidates = localized_footer_candidates(language, style, theme)
-        return choose(candidates, digest, 14)
-
     topic = footer_topic(theme, hint, digest)
     if style == "snarky":
         candidates = footer_snark_candidates(theme, topic, brand)

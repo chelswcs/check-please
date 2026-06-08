@@ -5,12 +5,12 @@
     <a href="./README.cantonese.md">Cantonese</a>
   </p>
   <h1>check-please</h1>
-  <p><strong>將 AI 用量，印成一張識得補刀嘅小票。</strong></p>
+  <p><strong>將 AI 用量，印成一張識得補刀嘅單。</strong></p>
 </div>
 
 ## 呢個係咩
 
-`check-please` 會將今次 AI 對話用咗幾多 token / context，打成一張 monospace 熱敏紙小票。
+`check-please` 會將今次 AI 對話用咗幾多 token / context，打成一張 monospace 熱敏紙單。
 
 佢唔係 dashboard，亦唔係 spreadsheet。佢會先讀本機真實日誌，再用 `references/pricing.json` 入面嘅價格表估算成本；如果模型未對應到價格，就會老老實實顯示未對應，唔會扮識計。
 
@@ -29,6 +29,8 @@ python3 scripts/check_please.py --language cantonese
 HTML 版都會有 `EN / 繁中 / 廣東話` 切換，一份檔案就可以轉語言。
 
 ## 快速用法
+
+主流程係 local-only：喺 chat 入面輸出單，同時喺本機寫出可打印 HTML，唔需要 deploy 網站。
 
 ```bash
 python3 scripts/check_please.py --agent-tool codex --chat-reply --language cantonese
@@ -54,15 +56,27 @@ python3 scripts/check_please.py \
 ## 觸發語
 
 - `token receipt`
+- `token 單`
 - `token 小票`
 - `AI 用量帳單`
+- `把今次對話打成單`
 - `把今次對話打成小票`
 - `睇下今輪 token 消耗`
+- `廣東話 token 單`
 - `廣東話 token 小票`
+- `用廣東話出單`
 - `用廣東話出小票`
 - `廣東話 token receipt`
 
 ## 可打印 HTML
+
+建議用 `--chat-reply`。佢會輸出 chat 用單，並自動寫出本機檔案 `/tmp/check-please.html`。
+
+```bash
+python3 scripts/check_please.py --agent-tool codex --chat-reply --language cantonese
+```
+
+亦可以只輸出 HTML：
 
 ```bash
 python3 scripts/check_please.py --agent-tool claude-code --output html --write ./receipt.html --language cantonese

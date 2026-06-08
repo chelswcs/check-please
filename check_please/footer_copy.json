@@ -1,268 +1,129 @@
 {
-  "footer": {
-    "zh-TW": {
-      "snarky": {
-        "visual": [
-          "畫面順了，預算空了。",
-          "像素對了，錢包跪了。",
-          "你修的是對齊，爆的是預算。",
-          "這版變好看，帳單也變好看。"
-        ],
-        "pricing": [
-          "價格很透明，心痛也透明。",
-          "數字很清楚，錢包很無助。",
-          "報價一出來，幻想就下台。",
-          "帳單沒情緒，你有。"
-        ],
-        "debug": [
-          "問題解了，帳單也來了。",
-          "Bug 修好了，費用留下了。",
-          "補丁補上了，錢包破防了。",
-          "錯誤不見了，代價有收據。"
-        ],
-        "shipping": [
-          "東西上線了，預算下線了。",
-          "交付完成，餘額陣亡。",
-          "成果出門了，錢回不來了。"
-        ],
-        "iteration": [
-          "最後一版，通常還有下一版。",
-          "再改一版，先刷一單。",
-          "細節越順，帳單越準。",
-          "版本又改版，錢包先買單。"
-        ],
-        "reasoning": [
-          "推理不免費，猶豫更昂貴。",
-          "答案出來了，腦力稅也來了。",
-          "想得很認真，結帳也很真。",
-          "結論落地，推理費到齊。"
-        ],
-        "context": [
-          "上下文撐住了，預算先躺平。",
-          "模型記很多，錢包也記得。",
-          "快取省一點，救不了整筆。",
-          "視窗還沒爆，餘額先爆。"
-        ],
-        "default": [
-          "結果很體面，帳單很誠實。",
-          "看起來輕鬆，付起來心痛。",
-          "結果到手，嘴硬失守。",
-          "事情做完，收據上門。"
-        ]
-      },
-      "dry": {
-        "visual": [
-          "Logo 動了，帳單留了。",
-          "對齊改了，費用也在。",
-          "像素用上了，錢也花上了。"
-        ],
-        "pricing": [
-          "價格在這裡，幻想不在這裡。",
-          "Token 落地，帳單到位。",
-          "這次花費，票面有數。"
-        ],
-        "debug": [
-          "修復落地，費用到位。",
-          "補丁合上，帳單跟上。",
-          "問題過了，帳單沒過。"
-        ],
-        "shipping": [
-          "交付完成，收據仍在。",
-          "結果發出去了，帳單留下來了。"
-        ],
-        "iteration": [
-          "這一版存在，收據作證。",
-          "調整完成，費用附上。"
-        ],
-        "reasoning": [
-          "思考發生了，帳單記下了。",
-          "推理出現了，費用也出現了。"
-        ],
-        "context": [
-          "上下文用掉了，票面確認。",
-          "快取有參與，帳單也有參與。"
-        ],
-        "default": [
-          "Token 用掉了，帳單確認。",
-          "這次輸出，有收據。",
-          "事情做完了，費用也到位了。"
-        ]
-      },
-      "encouraging": {
-        "visual": [
-          "像素安靜了，畫面也醒了。",
-          "排版順了，截圖可以出門了。",
-          "錢花下去，畫面有回來。",
-          "Logo 穩住了，收據也站住了。"
-        ],
-        "pricing": [
-          "帳單很誠實，結果也紮實。",
-          "這筆是明白錢。",
-          "價格清楚，事情也清楚。",
-          "費用有數，結果有路。"
-        ],
-        "debug": [
-          "修復花了 token，但方向保住了。",
-          "這次扣費，換到清靜。",
-          "補丁落地，節奏沒斷。"
-        ],
-        "shipping": [
-          "結果落地了，繼續推進。",
-          "錢花在交付上，不算白花。"
-        ],
-        "iteration": [
-          "這次微調有花錢，但真的有變好。",
-          "這一版落地，至少不是白改。"
-        ],
-        "reasoning": [
-          "思考花了 token，答案有回來。",
-          "推理費不低，結論還在。",
-          "結論不是免費，但它到了。"
-        ],
-        "context": [
-          "上下文撐住了，想法也撐住了。",
-          "快取省了一點時間，方向沒丟。",
-          "視窗很緊，結果還是塞進去了。"
-        ],
-        "default": [
-          "這筆錢，至少換到了結果。",
-          "結果出來了，帳單也認了。",
-          "錢燒掉了，事情推進了。",
-          "收據出來了，這輪不算白跑。"
-        ]
-      }
+  "footer": [
+    {
+      "en": "You also paid for the overthinking.",
+      "zh-TW": "想太多也是要收費的",
+      "cantonese": "諗得多好洗錢㗎"
     },
-    "cantonese": {
-      "snarky": {
-        "visual": [
-          "畫面順，銀包震。",
-          "像素靚，條數驚。",
-          "你執對齊，預算走位。",
-          "呢版夠醒，張單有聲。"
-        ],
-        "pricing": [
-          "價錢清，心口驚。",
-          "報價到，幻想冇。",
-          "張單無情，你有反應。",
-          "Token 數得明，銀包扣得醒。"
-        ],
-        "debug": [
-          "Bug 走咗，張單留低咗。",
-          "補丁合，銀包薄。",
-          "錯誤收聲，費用出聲。",
-          "問題過關，張單過山。"
-        ],
-        "shipping": [
-          "嘢已出街，錢唔返嚟。",
-          "上線成功，預算失蹤。",
-          "交付完成，餘額收工。"
-        ],
-        "iteration": [
-          "最後一版，通常有下版。",
-          "再改一版，先燒一單。",
-          "你改呢版，張單加碼變新版。",
-          "又改一版，銀包埋單。"
-        ],
-        "reasoning": [
-          "推理唔免費，猶豫更矜貴。",
-          "答案出，腦稅跟住出。",
-          "諗得認真，埋單更真。",
-          "結論到，推理費追到。"
-        ],
-        "context": [
-          "上下文頂住，預算先瞓住。",
-          "模型記得多，銀包喊奈何。",
-          "快取慳少少，救唔晒條數。",
-          "窗口未爆，餘額先報到。"
-        ],
-        "default": [
-          "結果好睇，張單好犀利。",
-          "睇落輕鬆，畀錢心痛。",
-          "結果到手，嘴硬冇得守。",
-          "件事做完，張單埋門。"
-        ]
-      },
-      "dry": {
-        "visual": [
-          "Logo 郁，張單錄。",
-          "對齊改，費用在。",
-          "像素用，錢包痛。"
-        ],
-        "pricing": [
-          "價錢在，幻想敗。",
-          "Token 落地，張單到位。",
-          "花費清楚，票面有數。"
-        ],
-        "debug": [
-          "修復落地，費用到位。",
-          "補丁合上，張單跟上。",
-          "問題過咗，張單未過。"
-        ],
-        "shipping": [
-          "交付完成，票面有憑。",
-          "結果出街，帳單留低。"
-        ],
-        "iteration": [
-          "呢版存在，張單作證。",
-          "調整完成，費用隨行。"
-        ],
-        "reasoning": [
-          "思考出現，費用浮現。",
-          "推理發生，張單作聲。"
-        ],
-        "context": [
-          "上下文用咗，票面認咗。",
-          "快取有份，張單有印。"
-        ],
-        "default": [
-          "Token 用咗，張單認咗。",
-          "今次輸出，張單有數。",
-          "件事做完，費用埋門。"
-        ]
-      },
-      "encouraging": {
-        "visual": [
-          "像素靜，畫面醒。",
-          "排版順，出街穩。",
-          "錢花咗，圖靚咗。",
-          "Logo 穩，小票準。"
-        ],
-        "pricing": [
-          "張單誠實，結果紮實。",
-          "明白錢，買到先。",
-          "價格清，件事明。",
-          "費用有數，結果有路。"
-        ],
-        "debug": [
-          "修復扣咗費，方向未走位。",
-          "今次扣費，換到安慰。",
-          "補丁落地，節奏未離地。"
-        ],
-        "shipping": [
-          "結果落地，繼續有戲。",
-          "錢花交付，唔算冇路。"
-        ],
-        "iteration": [
-          "微調花錢，靚咗先算贏。",
-          "呢版落地，唔算白費。"
-        ],
-        "reasoning": [
-          "思考花 token，答案有分。",
-          "推理費高，結論都到。",
-          "結論唔免費，但總算到位。"
-        ],
-        "context": [
-          "上下文頂住，諗法有住。",
-          "快取慳時間，方向未走偏。",
-          "窗口雖迫，結果都落。"
-        ],
-        "default": [
-          "呢筆錢，換到先。",
-          "結果出咗，張單認咗。",
-          "錢燒咗，件事郁咗。",
-          "小票出咗，今輪冇白做。"
-        ]
-      }
+    {
+      "en": "Emotional damage not included.",
+      "zh-TW": "情緒損耗不包含在本次帳單內",
+      "cantonese": "人工少少，要求多多"
+    },
+    {
+      "en": "Your tokens died for this.",
+      "zh-TW": "Token 燒了，錢包哭了",
+      "cantonese": "你做人唔好咁大洗啦"
+    },
+    {
+      "en": "Inference completed. Financial recovery pending.",
+      "zh-TW": "結果出來了，但錢包還沒恢復",
+      "cantonese": "放工唔係放工，係換個地方返工"
+    },
+    {
+      "en": "This transaction may have affected your sleep schedule.",
+      "zh-TW": "GPU 在跑，你沒在睡",
+      "cantonese": "有得震，冇得瞓"
+    },
+    {
+      "en": "Context survived. You didn't.",
+      "zh-TW": "上下文還活著，但人已經沒了",
+      "cantonese": "Context 未爆，你先爆"
+    },
+    {
+      "en": "Some tokens are meant to be spent.",
+      "zh-TW": "有些答案，是有代價的",
+      "cantonese": "有啲 token，係一定要燒㗎"
+    },
+    {
+      "en": "Some prompts stay with you, even after the cache is cleared.",
+      "zh-TW": "後來我才知道，有些 prompt 是不會被忘記的",
+      "cantonese": "有啲 prompt，clear cache 都清唔走"
+    },
+    {
+      "en": "That's enough computing for today",
+      "zh-TW": "好了啦，今天先燒到這裡",
+      "cantonese": "走先喇係咁先喇下次再玩吖"
+    },
+    {
+      "en": "Tiny bill. Huge confidence.",
+      "zh-TW": "花得不多，問題很多",
+      "cantonese": "銀包可以輸，氣勢唔可以輸"
+    },
+    {
+      "en": "Expensive thoughts. Expensive consequences",
+      "zh-TW": "高級焦慮，高級收費",
+      "cantonese": "出得嚟行，token 預咗要還"
+    },
+    {
+      "en": "Pixels aligned. Budget misaligned.",
+      "zh-TW": "畫面對齊了，預算沒有。",
+      "cantonese": "畫面順，銀包震。"
+    },
+    {
+      "en": "Some contexts last longer than situationships.",
+      "zh-TW": "這段 context，拖得比曖昧還久",
+      "cantonese": "有啲 context，長過啲 situationship"
+    },
+    {
+      "en": "This looks expensive because it was.",
+      "zh-TW": "看起來很貴，因為真的很貴。",
+      "cantonese": "以前我冇得揀，依家我想揀 GPT-5"
+    },
+    {
+      "en": "The spacing is fixed. Your finances aren't.",
+      "zh-TW": "間距修好了，財務狀況沒有",
+      "cantonese": "有批 token 好抵㗎，有需要打呢個電話"
+    },
+    {
+      "en": "He never said another word. Only the cache remained.",
+      "zh-TW": "他沒有再說話，只留下還沒清掉的 cache",
+      "cantonese": "Cache 都清咗，你仲未放低"
+    },
+    {
+      "en": "We fixed the issue. Not your spending habits.",
+      "zh-TW": "我們修好了問題，但沒修好你的消費習慣",
+      "cantonese": "BROOOO 你啲 prompt 要著兩條褲睇"
+    },
+    {
+      "en": "Patch deployed. Wallet weakened.",
+      "zh-TW": "補丁上線，錢包下線",
+      "cantonese": "Patch 出咗，銀包虛咗"
+    },
+    {
+      "en": "Error resolved. Character development added.",
+      "zh-TW": "錯誤修復完成，順便獲得人格成長。",
+      "cantonese": "Error 解決咗，人都成熟咗"
+    },
+    {
+      "en": "Deployment successful. Budget unsuccessful.",
+      "zh-TW": "上線成功，預算失蹤",
+      "cantonese": "上線成功，預算失蹤"
+    },
+    {
+      "en": "Shipped with confidence and mild panic.",
+      "zh-TW": "帶著自信與一點 panic 完成交付。",
+      "cantonese": "個 context 太深，返唔到出嚟"
+    },
+    {
+      "en": "I can tell you're a rare prompting talent.",
+      "zh-TW": "我看你很會下 prompt 喔",
+      "cantonese": "我睇你骨骼精奇，應該係重度 user"
+    },
+    {
+      "en": "One more tweak became three business days.",
+      "zh-TW": "再調一下，最後調了三天",
+      "cantonese": "話改少少，最後改到天光"
+    },
+    {
+      "en": "final_v2_revised_FINAL.json",
+      "zh-TW": "final_v12_已送審_FINAL.json",
+      "cantonese": "final_v12_真_FINAL.json"
+    },
+    {
+      "en": "This version has lore now.",
+      "zh-TW": "這個版本有點故事",
+      "cantonese": "呢個 version 有啲故仔"
     }
-  }
+  ]
 }

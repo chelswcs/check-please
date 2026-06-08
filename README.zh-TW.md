@@ -30,6 +30,8 @@ HTML 版本也會同時產生 `EN / 繁中 / 廣東話` 切換，不需要重新
 
 ## 快速使用
 
+主流程是 local-only：在聊天裡輸出小票，同時在本機寫出可列印 HTML，不需要部署網站。
+
 ```bash
 python3 scripts/check_please.py --agent-tool codex --chat-reply --language zh-TW
 python3 scripts/check_please.py --agent-tool claude-code --chat-reply --language zh-TW
@@ -63,6 +65,14 @@ python3 scripts/check_please.py \
 
 ## 可列印 HTML
 
+建議使用 `--chat-reply`。它會輸出聊天用小票，並自動寫出本機檔案 `/tmp/check-please.html`。
+
+```bash
+python3 scripts/check_please.py --agent-tool codex --chat-reply --language zh-TW
+```
+
+也可以只輸出 HTML：
+
 ```bash
 python3 scripts/check_please.py --agent-tool claude-code --output html --write ./receipt.html --language zh-TW
 ```
@@ -71,13 +81,15 @@ python3 scripts/check_please.py --agent-tool claude-code --output html --write .
 
 ## 分享連結
 
+分享連結是 optional，不是 local-only launch 的必要功能。
+
 單張收據可以輸出 zero-storage 分享連結：payload 只放在 URL 的 `#` 後面，server 收不到內容。
 
 ```bash
 python3 scripts/check_please.py --agent-tool codex --output share-url --share-base https://your-site.example --language zh-TW
 ```
 
-schema 寫在 `references/share-payload.md`。
+schema 寫在 `references/share-payload.md`。如果只需要本機 HTML，就不用設定 domain 或部署網站。
 
 ## 修改文案
 

@@ -127,8 +127,10 @@ For local CLI use, install the package in editable mode:
 ```bash
 python3 -m pip install -e .
 check-please --agent-tool codex --chat-reply
-check-please --language cantonese --provider openai --agent-tool generic --model gpt-5.4 --input-tokens 1000 --output-tokens 500
+check-please --language cantonese --provider openai --agent-tool generic --model gpt-5.4 --input-tokens 1000 --output-tokens 500 --total-tokens 1500
 ```
+
+The default launch path is local-only: print the receipt in chat and write a printable HTML artifact on the same machine. No hosted dashboard, account, database, or deploy step is required.
 
 ---
 
@@ -257,9 +259,22 @@ Edit the `zh-TW` or `cantonese` groups directly when tuning the voice. Each lang
 
 ## Printable HTML
 
-The main artifact is still the monospace receipt inside chat.
+The main artifact is the monospace receipt inside chat.
 
-HTML is the secondary route: useful when you want browser print preview, real printer output, or a cleaner handoff to thermal-printer workflows.
+The local HTML file is the printable companion: useful when you want browser print preview, real printer output, or a cleaner handoff to thermal-printer workflows.
+
+The recommended local-only flow is unified chat-reply mode:
+
+```bash
+python3 scripts/check_please.py --agent-tool codex --chat-reply
+python3 scripts/check_please.py --agent-tool claude-code --chat-reply
+python3 scripts/check_please.py --agent-tool kimi-code --chat-reply
+python3 scripts/check_please.py --agent-tool opencode --chat-reply
+```
+
+That prints the full receipt as the main chat artifact, automatically saves `/tmp/check-please.html`, and returns the local `[Printable HTML](/tmp/check-please.html)` link in the same reply.
+
+You can also write only the HTML file:
 
 ```bash
 python3 scripts/check_please.py --agent-tool claude-code --output html --write ./receipt.html
@@ -274,17 +289,6 @@ python3 scripts/check_please.py --agent-tool claude-code --write /tmp/check-plea
 ```
 
 That keeps the monospace receipt in chat while also giving you a clickable printable HTML file.
-
-The new default path is the unified chat-reply mode:
-
-```bash
-python3 scripts/check_please.py --agent-tool codex --chat-reply
-python3 scripts/check_please.py --agent-tool claude-code --chat-reply
-python3 scripts/check_please.py --agent-tool kimi-code --chat-reply
-python3 scripts/check_please.py --agent-tool opencode --chat-reply
-```
-
-That prints the full receipt as the main chat artifact, automatically saves `/tmp/check-please.html`, and returns the local `[Printable HTML](/tmp/check-please.html)` link in the same reply.
 
 The current HTML path is tuned for the same three things people actually notice:
 
@@ -304,6 +308,8 @@ And now it behaves more like a live checkout surface instead of a dead export:
 
 ## Share URL
 
+Share URLs are optional. You do not need them for the local-only receipt flow.
+
 Single-receipt web links use a zero-storage payload in the URL hash fragment. The server receives only the path, not the receipt data after `#`.
 
 ```bash
@@ -311,7 +317,7 @@ python3 scripts/check_please.py --agent-tool codex --output share-url --share-ba
 python3 scripts/check_please.py --agent-tool codex --share-url
 ```
 
-`--share-base` defaults to `CHECK_PLEASE_WEB_BASE`, then `https://check-please.example`. The payload schema is documented in `references/share-payload.md`.
+`--share-base` defaults to `CHECK_PLEASE_WEB_BASE`, then `https://check-please.example`. The payload schema is documented in `references/share-payload.md`. A hosted reader is outside the local-only launch path.
 
 ---
 
