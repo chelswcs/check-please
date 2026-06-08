@@ -1,6 +1,6 @@
 ---
 name: check-please
-description: Use when the user wants to view AI conversation token usage as a receipt, invoice, checkout slip, token bill, usage receipt, cost snapshot, or creative monospace thermal-paper artifact. Always consider this skill for Chinese prompts like 查看本次對話 Token 消耗, 生成 token 小票, AI 用量帳單, 把這次對話打成小票, 看看這輪 token 消耗, 繁體中文 token 小票, 廣東話 token 小票, or any request to make token/context usage visually shareable.
+description: Use when the user wants to view AI conversation token usage as a receipt, invoice, checkout slip, token bill, usage receipt, cost snapshot, or creative monospace thermal-paper artifact. Always consider this skill for Chinese prompts like 查看本次對話 Token 消耗, 生成 token 收據, 生成 token 小票, AI 用量帳單, 把這次對話打成收據, 把這次對話打成小票, 看看這輪 token 消耗, 繁體中文 token 收據, 繁體中文 token 小票, 廣東話 token 單, 廣東話 token 小票, or any request to make token/context usage visually shareable.
 ---
 
 # Check Please
@@ -13,12 +13,14 @@ description: Use when the user wants to view AI conversation token usage as a re
 
 - `token receipt`
 - `token 小票`
+- `token 收據`
 - `对话发票`
 - `AI 用量账单`
 - `把这次对话打成小票`
 - `看看这轮 token 消耗`
 - `查看本次对话 Token 消耗`
 - `繁體中文 token 小票`
+- `繁體中文 token 收據`
 - `廣東話 token 小票`
 
 Claude Code 如果装了自动触发，`SessionEnd` 结束时也会自动出票。
@@ -125,7 +127,7 @@ python3 scripts/uninstall_claude_auto_trigger.py
   - 英文：`--language en`
   - 繁體中文：`--language zh-TW`
   - 廣東話：`--language cantonese`
-  - 如果用户直接说“繁體中文小票 / 廣東話小票 / English receipt”，调用时就要带对这个参数。
+  - 如果用户直接说“繁體中文收據 / 繁體中文小票 / 廣東話單 / 廣東話小票 / English receipt”，调用时就要带对这个参数。
 11. 运行 `--show-fields` 可以查看当前日志里真实可读的字段。更详细说明见 `references/available-fields.md`。
 
 ## 架构

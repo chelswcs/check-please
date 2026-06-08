@@ -1,5 +1,29 @@
 # Changelog
 
+## 2026-06-08
+
+### Added
+
+- Local-only launch flow centered on `--chat-reply`
+- Printable HTML output at `/tmp/check-please.html`
+- Skills CLI install instructions in all three README files
+- `LICENSE` file with MIT terms
+- Google Gemini pricing coverage for current supported text-token models
+
+### Changed
+
+- Main README now focuses on what the project is, how to use it, and a receipt preview
+- Traditional Chinese README uses `收據` instead of `小票`
+- Cantonese README keeps `單`-first wording for its local copy
+- Footer copy now comes from row-aligned localized lines instead of tone/category buckets
+- Google pricing entries were refreshed to current official Gemini API names and rates
+
+### Notes
+
+- This project stays local-first by default; no hosted dashboard is required
+- Share URLs remain optional and outside the main launch path
+- The footer is inspired by `Hchen1218/token-receipt` and `chrishutchinson/claude-receipts`
+
 ## 2026-05-18
 
 ### Added

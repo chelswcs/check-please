@@ -5,12 +5,12 @@
     <a href="./README.cantonese.md">Cantonese</a>
   </p>
   <h1>check-please</h1>
-  <p><strong>把 AI 用量，印成一張自帶補刀的小票。</strong></p>
+  <p><strong>把 AI 用量，印成一張自帶補刀的收據。</strong></p>
 </div>
 
 ## 這是什麼
 
-`check-please` 會把本次 AI 對話的 token / context 用量，整理成一張 monospace 熱敏紙小票。
+`check-please` 會把本次 AI 對話的 token / context 用量，整理成一張 monospace 熱敏紙收據。
 
 它不是儀表板，也不是試算表。它優先讀本機真實日誌，再依照 `references/pricing.json` 的價格表估算成本；對不上價格時會明確顯示未映射，不會亂編金額。
 
@@ -46,7 +46,7 @@ npx skills add https://github.com/chelswcs/check-please -a opencode -y
 
 ## 快速使用
 
-主流程是 local-only：在聊天裡輸出小票，同時在本機寫出可列印 HTML，不需要部署網站。
+主流程是 local-only：在聊天裡輸出收據，同時在本機寫出可列印 HTML，不需要部署網站。
 
 ```bash
 python3 scripts/check_please.py --agent-tool codex --chat-reply --language zh-TW
@@ -72,16 +72,16 @@ python3 scripts/check_please.py \
 ## 觸發語
 
 - `token receipt`
-- `token 小票`
+- `token 收據`
 - `AI 用量帳單`
-- `把這次對話打成小票`
+- `把這次對話打成收據`
 - `查看本次對話 Token 消耗`
-- `繁體中文 token 小票`
-- `用繁體中文出小票`
+- `繁體中文 token 收據`
+- `用繁體中文出收據`
 
 ## 可列印 HTML
 
-建議使用 `--chat-reply`。它會輸出聊天用小票，並自動寫出本機檔案 `/tmp/check-please.html`。
+建議使用 `--chat-reply`。它會輸出聊天用收據，並自動寫出本機檔案 `/tmp/check-please.html`。
 
 ```bash
 python3 scripts/check_please.py --agent-tool codex --chat-reply --language zh-TW
