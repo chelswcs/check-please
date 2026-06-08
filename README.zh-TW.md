@@ -28,6 +28,22 @@ python3 scripts/check_please.py --language cantonese
 
 HTML 版本也會同時產生 `EN / 繁中 / 廣東話` 切換，不需要重新輸出檔案。
 
+## 安裝
+
+建議用 Skills CLI 安裝：
+
+```bash
+npx skills add https://github.com/chelswcs/check-please -g -y
+```
+
+只想裝到特定工具也可以：
+
+```bash
+npx skills add https://github.com/chelswcs/check-please -a codex -y
+npx skills add https://github.com/chelswcs/check-please -a claude-code -y
+npx skills add https://github.com/chelswcs/check-please -a opencode -y
+```
+
 ## 快速使用
 
 主流程是 local-only：在聊天裡輸出小票，同時在本機寫出可列印 HTML，不需要部署網站。
