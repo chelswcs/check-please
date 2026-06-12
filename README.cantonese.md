@@ -56,7 +56,7 @@ USD 估算                               $0.062851
 npx skills add https://github.com/chelswcs/check-please -g -y
 ```
 
-只想裝喺特定宿主：
+只想裝喺某個工具入面：
 
 ```bash
 npx skills add https://github.com/chelswcs/check-please -a claude-code -y
@@ -108,7 +108,7 @@ HTML 收據係一個自足嘅頁面，整到似部熱感打印機：
 `--scope today` 會聚合當日本地時區內所有會話：
 
 - 每個模型一行、各自計價；唔同貨幣分開出總額。
-- 表頭唔用宿主 logo，改用「全日埋單」標題，摘要顯示傾咗幾多場。
+- 表頭唔用工具 logo，改用「全日埋單」標題，摘要顯示傾咗幾多場。
 - 跨午夜嘅會話只計時間戳落喺今日嘅訊息（Codex 例外：佢嘅日誌係會話累計，按最後事件日期歸帳）。
 
 ## 自動出單（Claude Code）
@@ -128,7 +128,7 @@ python3 scripts/uninstall_claude_auto_trigger.py
 | Claude Code | `已支援` | `~/.claude/projects` transcripts | 逐訊息用量，連快取讀寫分項；`latest-turn` / `session` / `today` |
 | Codex | `已支援` | Codex JSONL sessions | `token_count` 事件；`latest-turn` / `session` / `today` |
 | OpenCode | `已支援` | `opencode*.db` SQLite | assistant 訊息嘅 tokens + `modelID`；全部 scope |
-| Cursor / Manus / Antigravity / Trae / 其他 agent | `手動模式` | 冇穩定本地用量日誌 | Agent 自己帶 `--input-tokens` / `--output-tokens`，配 `--agent-tool <host>` 顯示宿主名 |
+| Cursor / Manus / Antigravity / Trae / 其他 agent | `手動模式` | 冇穩定本地用量日誌 | Agent 自己帶 `--input-tokens` / `--output-tokens`，配 `--agent-tool <host>` 顯示返個工具名 |
 
 ## 價格
 
