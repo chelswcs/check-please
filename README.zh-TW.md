@@ -98,7 +98,7 @@ python3 scripts/check_please.py --agent-tool claude-code --write-html ./receipt.
 
 ## HTML 預覽
 
-HTML 收據是一個自足的頁面，做成熱感印表機的樣子：
+HTML 收據是單一獨立檔案（樣式與功能全部內嵌，離線也能開啟），做成熱感印表機的樣子：
 
 - 紙會從出紙口印出來，帶回彈，然後微微飄動、微彎；底部鋸齒撕邊是真實裁切，陰影跟著輪廓走。
 - **Print receipt**：用列印樣式輸出乾淨的 80mm 收據。
