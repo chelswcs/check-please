@@ -105,7 +105,7 @@ HTML 收據係一個獨立檔案（樣式同功能全部內嵌，唔使連網都
 
 ## 全日埋單
 
-`--scope today` 會聚合當日本地時區內所有會話：
+`--scope today` 會攬埋當日本地時區內所有會話：
 
 - 每個模型一行、各自計價；唔同貨幣分開出總額。
 - 表頭唔用工具 logo，改用「全日埋單」標題，摘要顯示傾咗幾多場。
@@ -121,18 +121,18 @@ python3 scripts/install_claude_auto_trigger.py --daily-receipt on
 python3 scripts/uninstall_claude_auto_trigger.py
 ```
 
-## 支援軟件
+## 支援工具
 
-| 軟件 | 狀態 | 數據來源 | 備註 |
+| 工具 | 狀態 | 數據來源 | 備註 |
 | --- | --- | --- | --- |
-| Claude Code | `已支援` | `~/.claude/projects` transcripts | 逐訊息用量，連快取讀寫分項；`latest-turn` / `session` / `today` |
+| Claude Code | `已支援` | `~/.claude/projects` transcripts | 逐訊息用量，連 cache 讀寫分項；`latest-turn` / `session` / `today` |
 | Codex | `已支援` | Codex JSONL sessions | `token_count` 事件；`latest-turn` / `session` / `today` |
 | OpenCode | `已支援` | `opencode*.db` SQLite | assistant 訊息嘅 tokens + `modelID`；全部 scope |
 | Cursor / Manus / Antigravity / Trae / 其他 agent | `手動模式` | 冇穩定本地用量日誌 | Agent 自己帶 `--input-tokens` / `--output-tokens`，配 `--agent-tool <host>` 顯示返個工具名 |
 
 ## 價格
 
-`check_please/pricing.json` 係唯一價格來源，收錄 Anthropic / OpenAI / Google 官方價格（連已公開嘅快取價格）。其餘模型一律顯示 `UNMAPPED` —— 誠實行先。
+`check_please/pricing.json` 係唯一價格來源，收錄 Anthropic / OpenAI / Google 官方價格（連已公開嘅 cache 價格）。其餘模型一律顯示 `UNMAPPED` —— 誠實行先。
 
 ---
 

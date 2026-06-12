@@ -4,8 +4,8 @@ from __future__ import annotations
 
 import argparse
 import json
+import subprocess
 import sys
-import webbrowser
 from pathlib import Path
 from typing import List, Optional
 
@@ -25,7 +25,8 @@ def format_chat_reply(receipt_text: str, html_path: Optional[Path] = None) -> st
 
 
 def open_in_default_browser(path: Path) -> bool:
-    return webbrowser.open(path.resolve().as_uri(), new=2)
+    result = subprocess.run(["open", str(path.resolve())], check=False)
+    return result.returncode == 0
 
 
 def parse_cli_language(value: str) -> str:
