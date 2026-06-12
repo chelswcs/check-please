@@ -34,7 +34,7 @@ python3 scripts/check_please.py --agent-tool codex --chat-reply
 python3 scripts/check_please.py --agent-tool opencode --chat-reply
 ```
 
-`--chat-reply` does three things at once: prints the full receipt as the chat reply body, writes `/tmp/check-please.html`, and appends `[Printable HTML](/tmp/check-please.html)` to the reply. Prefer it over hand-rolling `--write` + `--write-html` two-step flows. Do not run a default pass first and a second pass after grepping logs — that just prints duplicate logos in the tool output.
+`--chat-reply` does four things at once: prints the full receipt as the chat reply body, writes `/tmp/check-please.html`, opens that printable HTML file in the system default browser, and leaves a plain-text `Printable HTML: /tmp/check-please.html` fallback path. Prefer it over hand-rolling `--write` + `--write-html` two-step flows. Do not run a default pass first and a second pass after grepping logs — that just prints duplicate logos in the tool output.
 
 Whole-day bill (aggregates every session of the current local day, one line item per model, totals kept per currency):
 
@@ -56,7 +56,7 @@ In an interactive terminal the receipt prints line by line; piped output prints 
 
 ## Chat reply contract
 
-- The default reply is the complete artifact: receipt fenced code block + `[Printable HTML](/tmp/check-please.html)`. Nothing else around it — no explanations, summaries, status reports, or bullet lists.
+- The default reply is the complete artifact: receipt fenced code block + a plain-text `Printable HTML: /tmp/check-please.html` fallback path. `--chat-reply` also opens it in the system default browser, but the chat body must not include a `file://` URI or Markdown link because Electron hosts may capture those links in-app.
 - Never reply with only `RECEIPT # / TOTAL / USD ESTIMATE` style summaries; always show the full receipt body.
 - Only deviate when generation fails, fields are too incomplete to print, or the user explicitly asks for an explanation — and even then, shortest note first, then the receipt or the error.
 
@@ -65,7 +65,7 @@ In an interactive terminal the receipt prints line by line; piped output prints 
 <full receipt here>
 ```
 
-[Printable HTML](/tmp/check-please.html)
+Printable HTML: /tmp/check-please.html
 ````
 
 ## Hosts and data sources

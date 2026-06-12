@@ -85,7 +85,7 @@ Say one of these in chat, or run the CLI directly:
 Examples:
 
 ```bash
-# Single conversation (text receipt + printable HTML in one go)
+# Single conversation (text receipt + printable HTML opened in your system browser)
 python3 scripts/check_please.py --agent-tool claude-code --chat-reply
 
 # Whole-day bill: every session today, one line item per model

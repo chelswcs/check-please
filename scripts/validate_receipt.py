@@ -29,6 +29,7 @@ UNINSTALLER = ROOT / "scripts" / "uninstall_claude_auto_trigger.py"
 def run_script(script: Path, *args: str, env: dict[str, str] | None = None, stdin_text: str | None = None) -> str:
     child_env = {**os.environ}
     child_env.setdefault("PYTHONIOENCODING", "utf-8")
+    child_env.setdefault("CHECK_PLEASE_NO_BROWSER_OPEN", "1")
     if env:
         child_env.update(env)
     result = subprocess.run(
@@ -647,7 +648,8 @@ def main() -> int:
         "--chat-reply",
     )
     assert chat_reply.startswith("```text\n")
-    assert f"Printable HTML: {chat_html_target.resolve().as_uri()}" in chat_reply
+    assert f"Printable HTML: {chat_html_target}" in chat_reply
+    assert chat_html_target.resolve().as_uri() not in chat_reply
     assert "CLAUDE CODE" in chat_reply
     assert chat_html_target.exists(), "chat reply mode should always export default printable html"
     chat_saved_html = chat_html_target.read_text(encoding="utf-8")
@@ -715,7 +717,8 @@ def main() -> int:
     assert "CLAUDE CODE" in hook_json["systemMessage"]
     assert "THANK YOU FOR CODING WITH Claude" in hook_json["systemMessage"]
     assert "claude-sonnet-4.5" in hook_json["systemMessage"]
-    assert f"Printable HTML: {chat_html_target.resolve().as_uri()}" in hook_json["systemMessage"]
+    assert f"Printable HTML: {chat_html_target}" in hook_json["systemMessage"]
+    assert chat_html_target.resolve().as_uri() not in hook_json["systemMessage"]
 
     settings_dir = Path(tempfile.mkdtemp(prefix="check-please-settings-"))
     settings_path = settings_dir / "settings.json"

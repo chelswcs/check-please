@@ -83,7 +83,7 @@ check-please --agent-tool claude-code --chat-reply --language cantonese
 例子：
 
 ```bash
-# 單一對話（文字收據 + 可列印 HTML 一次出齊）
+# 單一對話（文字收據 + 可列印 HTML 會用系統瀏覽器打開）
 python3 scripts/check_please.py --agent-tool claude-code --chat-reply --language cantonese
 
 # 全日埋單：今日所有會話，每個模型一行

@@ -12,6 +12,7 @@
 
 ### Changed
 
+- `--chat-reply` now opens printable HTML in the system browser and prints only a plain local fallback path, avoiding `file://` links that Electron hosts may capture in-app
 - Main README now focuses on what the project is, how to use it, and a receipt preview
 - Traditional Chinese README standardised on `收據` wording
 - Cantonese README keeps `單`-first wording for its local copy
