@@ -20,7 +20,7 @@ DEFAULT_CHAT_HTML_PATH = Path("/tmp/check-please.html")
 def format_chat_reply(receipt_text: str, html_path: Optional[Path] = None) -> str:
     reply = f"```text\n{receipt_text}\n```"
     if html_path:
-        reply += f"\n\nPrintable HTML: {html_path.resolve().as_uri()}"
+        reply += f"\n\nPrintable HTML: `{html_path.resolve()}`"
     return reply
 
 
