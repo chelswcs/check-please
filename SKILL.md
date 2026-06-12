@@ -1,6 +1,6 @@
 ---
 name: check-please
-description: Use when the user wants to view AI conversation token usage as a receipt, invoice, checkout slip, token bill, usage receipt, cost snapshot, daily usage bill, or creative monospace thermal-paper artifact. Always consider this skill for Chinese prompts like 查看本次對話 Token 消耗, 生成 token 收據, 生成 token 小票, AI 用量帳單, 把這次對話打成收據, 把這次對話打成小票, 看看這輪 token 消耗, 今日用咗幾多 token, 今日 token 帳單, 全日用量單, 今日使費, 繁體中文 token 收據, 繁體中文 token 小票, 廣東話 token 單, 廣東話 token 小票, or any request to make token/context usage visually shareable.
+description: Use when the user wants to view AI conversation token usage as a receipt, invoice, checkout slip, token bill, usage receipt, cost snapshot, daily usage bill, or creative monospace thermal-paper artifact. Trigger on "check please" and Chinese prompts like 埋單, 結帳, 發票, 打單, 查看本次對話 Token 消耗, 生成 token 收據, 生成 token 小票, AI 用量帳單, 把這次對話打成收據, 把這次對話打成小票, 看看這輪 token 消耗, 今日用咗幾多 token, 今日 token 帳單, 全日用量單, 今日使費, 繁體中文 token 收據, 繁體中文 token 小票, 廣東話 token 單, 廣東話 token 小票, or any request to make token/context usage visually shareable.
 ---
 
 # Check Please
@@ -11,6 +11,11 @@ description: Use when the user wants to view AI conversation token usage as a re
 
 下面这些说法默认应该直接触发：
 
+- `check please`
+- `埋單`
+- `結帳`
+- `發票`
+- `打單`
 - `token receipt`
 - `token 小票`
 - `token 收據`
