@@ -139,6 +139,6 @@ python3 scripts/uninstall_claude_auto_trigger.py
 
 `check_please/pricing.json` is the single pricing source, covering official Anthropic / OpenAI / Google rates (including cache pricing where published). Anything else renders as `UNMAPPED` — honesty over guesswork.
 
-## Footer
+---
 
-Inspired by [Hchen1218/token-receipt](https://github.com/Hchen1218/token-receipt) and [chrishutchinson/claude-receipts](https://github.com/chrishutchinson/claude-receipts).
+<sub>Inspired by [Hchen1218/token-receipt](https://github.com/Hchen1218/token-receipt) and [chrishutchinson/claude-receipts](https://github.com/chrishutchinson/claude-receipts).</sub>

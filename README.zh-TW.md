@@ -137,6 +137,6 @@ python3 scripts/uninstall_claude_auto_trigger.py
 
 `check_please/pricing.json` 是唯一價格來源，收錄 Anthropic / OpenAI / Google 官方價格（含已公開的快取價格）。其餘模型一律顯示 `UNMAPPED` —— 誠實優先。
 
-## 致謝
+---
 
-靈感來自 [Hchen1218/token-receipt](https://github.com/Hchen1218/token-receipt) 與 [chrishutchinson/claude-receipts](https://github.com/chrishutchinson/claude-receipts)。
+<sub>靈感來自 [Hchen1218/token-receipt](https://github.com/Hchen1218/token-receipt) 與 [chrishutchinson/claude-receipts](https://github.com/chrishutchinson/claude-receipts)。</sub>
