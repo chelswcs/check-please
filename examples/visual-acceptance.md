@@ -1,29 +1,29 @@
-# Check Please 视觉验收
+# Check Please 視覺驗收
 
-人工验收时先看视觉，不要先看字段清单。
+人工驗收時先睇視覺，唔好先睇欄位清單。
 
-## 必须通过
+## 必須通過
 
-- 一眼像热敏纸小票，而不是普通表格。
-- 在聊天里调用时，默认回复应该直接是完整 receipt 本体，而不是“已处理”“已打印”或字段摘要。
-- 顶部有品牌感，能区分 Codex / Claude Code / Generic。
-- Claude Code 顶部使用缩小版 `█` block 像素螃蟹轮廓，整块左边缘和主体不能歪。
-- 顶部 logo 按 Agent 工具决定；感谢语按实际模型决定。
-- `TOTAL` 是视觉中心。
-- 底部有根据模型/当前对话总结变化的 footer 和条形码，适合截图传播。
-- 终端运行时可以用 `--stream` 形成一行一行打印的小票效果。
-- 所有价格都有来源口径；未知价格明确标注 `UNMAPPED`。
-- 美元模型显示 `USD ESTIMATE`，人民币模型显示 `CNY ESTIMATE`；有平台或区域口径时显示 `RATE NOTE`。
-- Token 明细只包含已固定且有来源的字段：通用字段 `Input Tokens`、`Output Tokens`、`Cache Read Tokens`、`TOTAL`；可选字段 `Reasoning Tokens`、`Cache Write Tokens` 有就显示。
+- 一眼似熱感紙收據，而唔係普通表格。
+- 喺聊天入面調用時，預設回覆應該直接係完整 receipt 本體，而唔係「已處理」「已輸出」或者欄位摘要。
+- 頂部有品牌感，可以區分 Codex / Claude Code / Generic。
+- Claude Code 頂部使用縮細版 `█` block 像素螃蟹輪廓，成塊左邊緣同主體唔可以歪。
+- 頂部 logo 按 Agent 工具決定；感謝語按實際模型決定。
+- `TOTAL` 係視覺中心。
+- 底部有根據模型/當前對話總結變化嘅 footer 同條碼，適合截圖分享。
+- 終端運行時可以用 `--stream` 形成一行一行印出嚟嘅收據效果。
+- 所有價格都有來源口徑；未知價格明確標註 `UNMAPPED`。
+- 美元模型顯示 `USD ESTIMATE`，人民幣模型顯示 `CNY ESTIMATE`；有平台或區域口徑時顯示 `RATE NOTE`。
+- Token 明細只包含已固定而且有來源嘅欄位：通用欄位 `Input Tokens`、`Output Tokens`、`Cache Read Tokens`、`TOTAL`；可選欄位 `Reasoning Tokens`、`Cache Write Tokens` 有就顯示。
 
-## 应该拒绝
+## 應該拒絕
 
 - Markdown 表格。
-- 纯 JSON / YAML / CSV。
-- 只有 token 数字，没有小票形态。
-- 聊天回复里先写一段解释，再贴小票，导致视觉被打断。
-- 只返回 `RECEIPT #`、`TOTAL`、`USD ESTIMATE` 这类摘录，而不是完整小票。
-- 超宽换行导致截图不好看。
-- 模型价格不匹配时硬算美元。
-- 打印 `System Tokens`、`Tool Use Tokens` 或其他尚未固定的数据项。
-- 出现 `DATA: SNAPSHOT`。
+- 純 JSON / YAML / CSV。
+- 只有 token 數字，冇收據形態。
+- 聊天回覆入面先寫一段解釋，再貼收據，令視覺被打斷。
+- 只返回 `RECEIPT #`、`TOTAL`、`USD ESTIMATE` 呢類摘錄，而唔係完整收據。
+- 超闊換行令截圖唔好睇。
+- 模型價格對應唔到時硬計美元。
+- 輸出 `System Tokens`、`Tool Use Tokens` 或者其他未固定嘅數據項。
+- 出現 `DATA: SNAPSHOT`。

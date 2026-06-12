@@ -10,10 +10,9 @@
 
 ## 這是什麼
 
-check-please 會把 AI Token 使用量整理成一張等寬字體收據。
+`check-please` 會把 AI Token 用量變成一張 monospace 熱感紙收據，可以貼進對話、列印，或存成 PNG。
 
-你可以直接貼到聊天室、輸出成 HTML，或立刻截圖分享。
-它會優先讀取本機紀錄，再根據官方價格估算成本；遇到缺少的資料時，會如實標示，而不是自行猜測。
+它先讀本機真實日誌，再用 `check_please/pricing.json` 的官方價格表估算成本；對應不到價格的模型會誠實顯示 `UNMAPPED`，不會編造數字。
 
 ## 預覽
 
@@ -24,7 +23,7 @@ check-please 會把 AI Token 使用量整理成一張等寬字體收據。
                   CLAUDE CODE
 
                 感謝使用 Claude
-      收據號碼: CC_20260427_151928_7CE382
+        收據號碼: CC_20260427_151928_7CE382
             日期: 2026-04-27 15:19:28
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 供應商                                 ANTHROPIC
@@ -36,16 +35,14 @@ check-please 會把 AI Token 使用量整理成一張等寬字體收據。
 輸入 Tokens                               12,487
 輸出 Tokens                                3,215
 快取讀取                                   8,742
-推理 Tokens                                  128
-快取寫入                                   1,024
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 總計                               15,702 Tokens
 ────────────────────────────────────────────────
-USD 預估                               $0.064771
+USD 預估                               $0.062851
 價格對應                       claude-sonnet-4.5
-價格日期                              2026-04-25
+價格日期                              2026-06-12
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-             畫面對齊了，預算沒有。
+              想太多也是要收費的
 
         ||| ||||| || ||| | | || |||  | |
            CC_20260427_151928_7CE382
@@ -53,71 +50,93 @@ USD 預估                               $0.064771
 
 ## 安裝
 
-推薦透過 Skills CLI 安裝：
+建議用 Skills CLI 安裝：
 
 ```bash
 npx skills add https://github.com/chelswcs/check-please -g -y
 ```
 
-如果只想安裝到特定工具：
+只想裝在特定宿主：
 
 ```bash
-npx skills add https://github.com/chelswcs/check-please -a codex -y
 npx skills add https://github.com/chelswcs/check-please -a claude-code -y
+npx skills add https://github.com/chelswcs/check-please -a codex -y
 npx skills add https://github.com/chelswcs/check-please -a opencode -y
 ```
 
-本機 CLI 使用方式：
+本機 CLI 使用：
 
 ```bash
 python3 -m pip install -e .
-check-please --agent-tool codex --chat-reply
+check-please --agent-tool claude-code --chat-reply
 ```
 
-## 使用方式
+## 怎麼用
 
-直接在聊天中輸入以下任一指令，或透過 CLI 執行：
+在對話裡說下面任何一句，或直接執行 CLI：
 
-- `token receipt`
-- `token bill`
-- `usage receipt`
-- `token 收據`
-- `AI 用量帳單`
-- `把這次對話打成收據`
-- `看看這輪 token 消耗`
-- `查看本次對話 Token 消耗`
+- `check please` / `token receipt`
+- `埋單` / `結帳` / `發票` / `打單`
+- `token 收據` / `AI 用量帳單` / `把這次對話打成收據`
+- 全日帳單：`今日帳單` / `全日用量單` / `daily usage`
 
 範例：
 
 ```bash
-python3 scripts/check_please.py --agent-tool codex --chat-reply
+# 單一對話（文字收據 + 可列印 HTML 一次出齊）
 python3 scripts/check_please.py --agent-tool claude-code --chat-reply
-python3 scripts/check_please.py --agent-tool opencode --chat-reply
+
+# 全日帳單：今天所有會話，每個模型一行
+python3 scripts/check_please.py --agent-tool claude-code --scope today --chat-reply
+
+# 語言：en | zh-TW | cantonese
+python3 scripts/check_please.py --agent-tool claude-code --language zh-TW --chat-reply
+
+# 直接輸出 HTML 並在瀏覽器開啟
+python3 scripts/check_please.py --agent-tool claude-code --write-html ./receipt.html --open-html
 ```
 
-輸出可列印的 HTML，並用預設瀏覽器打開：
+## HTML 預覽
+
+HTML 收據是一個自足的頁面，做成熱感印表機的樣子：
+
+- 紙會從出紙口印出來，帶回彈，然後微微飄動、微彎；底部鋸齒撕邊是真實裁切，陰影跟著輪廓走。
+- **Print receipt**：用列印樣式輸出乾淨的 80mm 收據。
+- **Save PNG**：匯出 3× PNG（檔名用收據號碼），按下去會有撕紙動畫，然後印表機重新印一張。零外部依賴，離線可用。
+- **EN / 繁中 / 廣東話** 切換會用所選語言重新印一次。
+- 小費面板（15/18/20/25%）會加上「小計 / 小費 / 應付總額」。
+
+## 全日帳單
+
+`--scope today` 聚合當天本地時區內的所有會話：
+
+- 每個模型一行、各自計價；不同貨幣分開出總額。
+- 表頭不用宿主 logo，改用「全日帳單」標題，摘要顯示會話數。
+- 跨午夜的會話只計入時間戳落在今天的訊息（Codex 例外：其日誌為會話累計，按最後事件日期歸帳）。
+
+## 自動出單（Claude Code）
+
+會話結束時自動出收據。兩張單都可由使用者在 `~/.claude/check-please.json` 開關：
 
 ```bash
-python3 scripts/check_please.py --agent-tool claude-code --output html --write ./receipt.html --open-html
+# 關閉會話時出該會話收據（預設開）+ 當日累計帳單（預設關）
+python3 scripts/install_claude_auto_trigger.py --daily-receipt on
+python3 scripts/uninstall_claude_auto_trigger.py
 ```
 
 ## 支援軟體
 
 | 軟體 | 狀態 | 資料來源 | 備註 |
 | --- | --- | --- | --- |
-| Codex | `已支援` | Codex JSONL Session | 直接讀取本機 Session 紀錄 |
-| Claude Code | `已支援` | Claude usage-data + projects | Token 來自 usage log，Model 來自對話紀錄 |
-| Trae | `目前手動模式` | Trae App Storage | 尚未支援自動匯入對話紀錄 |
-| Cursor / Manus / Antigravity / 其他 agent | `手動模式` | 無穩定本地用量日誌 | Agent 自行帶 `--input-tokens` / `--output-tokens`，配 `--agent-tool <host>` 顯示宿主標識 |
-| OpenCode | `已支援` | OpenCode SQLite Database | 支援 `latest-turn` 與 `session` 統計 |
+| Claude Code | `已支援` | `~/.claude/projects` transcripts | 逐訊息用量，含快取讀寫分項；`latest-turn` / `session` / `today` |
+| Codex | `已支援` | Codex JSONL sessions | `token_count` 事件；`latest-turn` / `session` / `today` |
+| OpenCode | `已支援` | `opencode*.db` SQLite | assistant 訊息的 tokens + `modelID`；全部 scope |
+| Cursor / Manus / Antigravity / Trae / 其他 agent | `手動模式` | 無穩定本地用量日誌 | Agent 自行帶 `--input-tokens` / `--output-tokens`，配 `--agent-tool <host>` 顯示宿主標識 |
 
-## 注意事項
+## 價格
 
-- 部分 Trae 版本使用 `Trae CN` 或 `.trae-cn` 路徑。
-- 在 Codex 內執行時，會自動偵測並讀取 Codex 紀錄。
-- 在 Claude Code SessionEnd Hook 中執行時，會自動讀取 Claude Code Usage Log。
-- 若系統偵測到多個工具的本機紀錄，請使用 `--agent-tool` 指定來源。
+`check_please/pricing.json` 是唯一價格來源，收錄 Anthropic / OpenAI / Google 官方價格（含已公開的快取價格）。其餘模型一律顯示 `UNMAPPED` —— 誠實優先。
 
-## Footer
+## 致謝
 
-靈感來自：[Hchen1218/token-receipt](https://github.com/Hchen1218/token-receipt) 及 [chrishutchinson/claude-receipts](https://github.com/chrishutchinson/claude-receipts)。
+靈感來自 [Hchen1218/token-receipt](https://github.com/Hchen1218/token-receipt) 與 [chrishutchinson/claude-receipts](https://github.com/chrishutchinson/claude-receipts)。

@@ -13,7 +13,7 @@
 ### Changed
 
 - Main README now focuses on what the project is, how to use it, and a receipt preview
-- Traditional Chinese README uses `收據` instead of `小票`
+- Traditional Chinese README standardised on `收據` wording
 - Cantonese README keeps `單`-first wording for its local copy
 - Footer copy now comes from row-aligned localized lines instead of tone/category buckets
 - Google pricing entries were refreshed to current official Gemini API names and rates

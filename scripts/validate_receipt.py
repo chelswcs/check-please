@@ -486,7 +486,7 @@ def main() -> int:
         "--cached-input-tokens", "8742",
         "--output-tokens", "3215",
         "--width", "48",
-        "--conversation-summary", "反复打磨 logo 对齐和小票视觉",
+        "--conversation-summary", "一直打磨 logo 對齊同收據視覺",
     )
     pricing_footer_case = run_case(
         "--provider", "openai",
@@ -496,7 +496,7 @@ def main() -> int:
         "--cached-input-tokens", "8742",
         "--output-tokens", "3215",
         "--width", "48",
-        "--conversation-summary", "核对价格表和美元估算口径",
+        "--conversation-summary", "核對價格表同美元估算口徑",
     )
     visual_footer = extract_footer(visual_footer_case)
     pricing_footer = extract_footer(pricing_footer_case)

@@ -1,23 +1,23 @@
-# Check Please 视觉规范
+# Check Please 視覺規範
 
-目标不是做“准确但无聊的表格”，而是做一张能截图传播的热敏纸小票。票面要稳定适配 monospace；Logo 区允许使用 `█░▒▓▐▛▜▌▘▝` 做像素块，金额区允许 `¥` 表示人民币，其余内容尽量保持 ASCII。
+目標唔係做「準確但無聊嘅表格」，而係做一張可以截圖分享嘅熱感紙收據。單面要穩定適配 monospace；Logo 區允許用 `█░▒▓▐▛▜▌▘▝` 做像素塊，金額區允許 `¥` 表示人民幣，其餘內容盡量保持 ASCII。
 
-## 票面结构
+## 單面結構
 
-1. 顶部品牌区：像素感头图 + 产品名。
-2. 说明区：`THANK YOU FOR CODING WITH ...`、receipt id、日期、provider、model、context used。
-3. 明细区：`ITEM / TOKENS` 两列，数字右对齐。
-4. 总计区：`TOTAL` 单独加重，不要埋在明细里。
-5. 金额区：官方估算金额，按模型条目显示 `USD ESTIMATE` 或 `CNY ESTIMATE`；匹配不到价格时显示 `PRICE: UNMAPPED`。
-6. 底部传播区：一句根据模型和当前对话总结生成的短 footer + ASCII 条形码 + receipt id。
+1. 頂部品牌區：像素感頭圖 + 產品名（全日單改用「全日埋單」masthead）。
+2. 說明區：`THANK YOU FOR CODING WITH ...`、receipt id、日期、provider、model、context used。
+3. 明細區：`ITEM / TOKENS` 兩欄，數字靠右對齊。
+4. 總計區：`TOTAL` 單獨加重，唔好埋喺明細入面。
+5. 金額區：官方估算金額，按模型條目顯示 `USD ESTIMATE` 或 `CNY ESTIMATE`；對應唔到價格時顯示 `PRICE: UNMAPPED`。
+6. 底部分享區：一句根據模型同當前對話總結生成嘅短 footer + ASCII 條碼 + receipt id。
 
-## 默认宽度
+## 預設闊度
 
-默认 48 字符；可选 42、48、56、64。脚本必须保证每一行不超过指定宽度。
+預設 48 字元；可選 42、48、56、64。腳本必須保證每一行唔超過指定闊度。
 
-## 品牌头图方向
+## 品牌頭圖方向
 
-顶部 logo 按 Agent 工具决定，不按模型决定。感谢语按模型决定，不按 Agent 工具决定。
+頂部 logo 按 Agent 工具決定，唔按模型決定。感謝語按模型決定，唔按 Agent 工具決定。
 
 Codex：
 
@@ -63,19 +63,19 @@ Generic：
           [ AI CHECKOUT ]
 ```
 
-## 文案原则
+## 文案原則
 
-- 票面字段保留小票感但提高可读性。通用稳定字段固定为：`Input Tokens`、`Output Tokens`、`Cache Read Tokens`、`TOTAL`。
-- 分隔线要分强弱两级：粗主分隔线用于切主区域，细副分隔线用于承接表头和次区块，不要整张票只用一种横线。
-- 可选字段固定为：`Reasoning Tokens`、`Cache Write Tokens`。有真实字段就显示，没有就省略。
-- 不要打印来源不确定的字段。比如 `System Tokens`、`Tool Use Tokens` 不进入首版票面。
-- 多币种价格必须保留来源口径。人民币模型可以显示 `RATE NOTE`，例如 `CN MAINLAND` 或 `ALIYUN CN`；MiMo 这类通过 OpenRouter 补价的模型显示 `OPENROUTER`，避免把平台公开价伪装成厂商直连账单。
-- 感谢语里的模型/品牌名保留标准写法，例如 `ChatGPT`、`GLM`、`MiniMax`、`DeepSeek`，不要全部压成 `CHATGPT`。
-- 条形码使用原版 `|` 细竖线组合，保持轻量的 ASCII 小票质感。
-- 当前版本不做二维码；聊天小票和默认票面继续保留条形码 + receipt id 结构。
-- 交互式终端里默认逐行打印 receipt；若输出被管道或脚本捕获，则默认整块输出。需要强制逐行时用 `--stream`，需要强制整块时用 `--no-stream`。聊天回复仍使用代码块保持等宽布局。
-- 解释性中文不要放进票面，放在 Skill 回复正文里。
-- footer 要短，有传播记忆点，并且要像“这次对话自己的句子”。实现上不要走固定整句抽签，也不要走一眼能看穿的槽位拼句；更合适的是按主题生成几种不同口吻的短吐槽，再结合当前对话摘要挑一句。
-- 黑色幽默要可读，像模型在轻微吐槽用户，而不是像文案模板在套词。优先接近这类感觉：`REASONING WAS BILLED SEPARATELY.`、`THE LAST REVISION WAS NOT THE LAST.`、`THE PRICE TAG IS HONEST. THE PROCESS WAS NOT.`；不要生成前言不搭后语的句子。
-- 默认语气限制在黑色幽默或暖心鼓励之间；显式 `--footer-tone` 仍然可以强制风格。
-- footer 最多 2 行，每行控制在紧凑长度内，避免把小票下半区挤坏。
+- 單面欄位保留收據感但提高可讀性。通用穩定欄位固定為：`Input Tokens`、`Output Tokens`、`Cache Read Tokens`、`TOTAL`。
+- 分隔線要分強弱兩級：粗主分隔線用嚟切主區域，細副分隔線用嚟承接表頭同次區塊，唔好成張單只用一種橫線。
+- 可選欄位固定為：`Reasoning Tokens`、`Cache Write Tokens`。有真實欄位就顯示，冇就略過。
+- 唔好輸出來源不確定嘅欄位。例如 `System Tokens`、`Tool Use Tokens` 唔入單面。
+- 多貨幣價格必須保留來源口徑，唔同貨幣分開出總額，唔好夾埋加。
+- 感謝語入面嘅模型/品牌名保留標準寫法，例如 `ChatGPT`、`Gemini`，唔好全部壓成 `CHATGPT`。
+- 條碼使用原版 `|` 細直線組合，保持輕量嘅 ASCII 收據質感。
+- 目前版本唔做 QR code；對話收據同預設單面繼續保留條碼 + receipt id 結構。
+- 互動式終端入面預設逐行輸出 receipt；如果輸出被 pipe 或腳本捕獲，就預設整塊輸出。需要強制逐行用 `--stream`，需要強制整塊用 `--no-stream`。聊天回覆仍然用代碼區塊保持等闊排版。
+- 解釋性中文唔好放入單面，放喺 Skill 回覆正文入面。
+- footer 要短、有記憶點，而且要似「呢次對話自己嘅句子」。實現上句庫來自 `footer_copy.json`（對齊文案表），按對話摘要等種子穩定揀句。
+- 黑色幽默要可讀，似模型輕輕吐槽用戶，而唔係文案模板套詞。優先接近呢類感覺：`REASONING WAS BILLED SEPARATELY.`、`THE LAST REVISION WAS NOT THE LAST.`、`THE PRICE TAG IS HONEST. THE PROCESS WAS NOT.`；唔好生成前言不對後語嘅句子。
+- 預設語氣限制喺黑色幽默或者暖心鼓勵之間；顯式 `--footer-tone` 仍然可以強制風格。
+- footer 最多 2 行，每行控制喺緊湊長度內，避免把收據下半區迫爆。

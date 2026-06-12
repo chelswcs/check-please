@@ -282,7 +282,7 @@ def provider_and_slug_from_opencode_model(model_id_raw: str) -> tuple[str, str]:
 
 
 def opencode_standard_dirs(home: Optional[Path] = None) -> list[Path]:
-    """OpenCode SQLite 存放目录候选（对齐 CodeBurn opencode.ts getDataDir 思路 + Windows LOCALAPPDATA）。"""
+    """OpenCode SQLite 存放目錄候選（對齊 CodeBurn opencode.ts getDataDir 思路 + Windows LOCALAPPDATA）。"""
     seen: Dict[str, Path] = {}
 
     def add(p: Path) -> None:
@@ -330,7 +330,7 @@ def _opencode_db_has_session_message(conn: sqlite3.Connection) -> bool:
 
 
 def _opencode_list_root_sessions(conn: sqlite3.Connection) -> list[tuple[str, int]]:
-    """返回 (session_id, time_created) 根会话，优先跳过子会话与归档列（若不存在则降级查询）。"""
+    """返回 (session_id, time_created) 根會話，優先跳過子會話同歸檔欄位（如果唔存在就降級查詢）。"""
     queries = (
         "SELECT id, time_created FROM session WHERE time_archived IS NULL AND parent_id IS NULL ORDER BY time_created DESC",
         "SELECT id, time_created FROM session WHERE parent_id IS NULL ORDER BY time_created DESC",
@@ -521,7 +521,7 @@ def load_snapshot_from_opencode_sqlite(
     raw_model_final = raw_model_cell or model_from_env() or "UNRECORDED"
     vendor_provider, inferred_slug = provider_and_slug_from_opencode_model(raw_model_final)
     provider = provider_override or vendor_provider
-    # 票面模型名优先用户覆盖；否则用 vendor/slug → 仅剩 slug（与定价表对齐）
+    # 單面模型名優先用戶覆蓋；否則用 vendor/slug → 淨返 slug（同定價表對齊）
     if model_override and model_override.strip():
         mo = model_override.strip()
         model_line = billing_model_slug_from_opencode(mo) if "/" in mo else mo

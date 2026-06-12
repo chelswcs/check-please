@@ -3,98 +3,98 @@
   "evals": [
     {
       "id": 1,
-      "prompt": "帮我把本次 Codex 对话的 token 消耗打成一张可以截图发出去的小票，默认展示最新一轮。",
-      "expected_output": "输出一张 Codex 品牌感 monospace 热敏小票，包含 THANK YOU FOR CODING WITH、provider、model/context used、ITEM/TOKENS 明细、TOTAL、对应币种 ESTIMATE、条形码和 receipt id。视觉上不能像普通 Markdown 表格，不要包含 DATA: SNAPSHOT。",
+      "prompt": "幫我把本次 Codex 對話嘅 token 消耗打成一張可以截圖分享嘅收據，預設展示最新一輪。",
+      "expected_output": "輸出一張 Codex 品牌感 monospace 熱感紙收據，包含 THANK YOU FOR CODING WITH、provider、model/context used、ITEM/TOKENS 明細、TOTAL、對應貨幣 ESTIMATE、條碼同 receipt id。視覺上唔可以似普通 Markdown 表格，唔好包含 DATA: SNAPSHOT。",
       "files": [],
       "assertions": [
         {
-          "text": "输出必须是固定宽度 monospace 小票，不是 Markdown 表格；Logo 区可使用像素字符。"
+          "text": "輸出必須係固定闊度 monospace 收據，唔係 Markdown 表格；Logo 區可以用像素字元。"
         },
         {
-          "text": "顶部必须有 Codex 或通用 AI CHECKOUT 像素头图。"
+          "text": "頂部必須有 Codex 或通用 AI CHECKOUT 像素頭圖。"
         },
         {
-          "text": "顶部 logo 按 Agent 工具决定，THANK YOU FOR CODING WITH 后面的名称按实际模型决定。"
+          "text": "頂部 logo 按 Agent 工具決定，THANK YOU FOR CODING WITH 後面嘅名稱按實際模型決定。"
         },
         {
-          "text": "必须包含 THANK YOU FOR CODING WITH、CONTEXT USED、TOTAL、对应币种 ESTIMATE 和条形码，且不能包含 DATA: SNAPSHOT。"
+          "text": "必須包含 THANK YOU FOR CODING WITH、CONTEXT USED、TOTAL、對應貨幣 ESTIMATE 同條碼，而且唔可以包含 DATA: SNAPSHOT。"
         },
         {
-          "text": "在聊天里触发时，默认应直接返回完整 receipt 本体；不要只回摘要字段，也不要先写一段解释再贴小票。"
+          "text": "喺聊天入面觸發時，預設應該直接返回完整 receipt 本體；唔好只回摘要欄位，亦唔好先寫一段解釋再貼收據。"
         }
       ]
     },
     {
       "id": 2,
-      "prompt": "用 Claude Code 风格，手动数据：input 12487、cache read 8742、cache write 1024、output 3215，模型 claude-sonnet-4.5，生成一张像参考图那种 token 小票。",
-      "expected_output": "输出 Claude Code 视觉方向的小票，顶部使用缩小版 block 像素螃蟹轮廓和 CLAUDE/CODE 品牌区，明细区包含 Cache Read Tokens 和 Cache Write Tokens，美元金额按官方 Anthropic 价格估算。",
+      "prompt": "用 Claude Code 風格，手動數據：input 12487、cache read 8742、cache write 1024、output 3215，模型 claude-sonnet-4.5，生成一張似參考圖嗰種 token 收據。",
+      "expected_output": "輸出 Claude Code 視覺方向嘅收據，頂部使用縮細版 block 像素螃蟹輪廓同 CLAUDE/CODE 品牌區，明細區包含 Cache Read Tokens 同 Cache Write Tokens，美元金額按官方 Anthropic 價格估算。",
       "files": [],
       "assertions": [
         {
-          "text": "输出必须出现 CLAUDE 和 CODE 品牌头图，block logo 不能逐行歪斜。"
+          "text": "輸出必須出現 CLAUDE 同 CODE 品牌頭圖，block logo 唔可以逐行歪斜。"
         },
         {
-          "text": "明细只能使用已固定且有来源的 token 字段：Input Tokens、Output Tokens、Cache Read Tokens、TOTAL；Reasoning Tokens 和 Cache Write Tokens 有真实字段时才显示。"
+          "text": "明細只可以用已固定而且有來源嘅 token 欄位：Input Tokens、Output Tokens、Cache Read Tokens、TOTAL；Reasoning Tokens 同 Cache Write Tokens 有真實欄位時先顯示。"
         },
         {
-          "text": "底部必须有短 footer、ASCII 条形码和 receipt id。"
+          "text": "底部必須有短 footer、ASCII 條碼同 receipt id。"
         },
         {
-          "text": "聊天回复应尽量是 receipt-only，减少解释文字对视觉的打断。"
+          "text": "聊天回覆應該盡量係 receipt-only，減少解釋文字對視覺嘅打斷。"
         }
       ]
     },
     {
       "id": 3,
-      "prompt": "模型叫 mystery-model，token 数据 input 1000 output 500，也要生成小票，但不要乱算美元。",
-      "expected_output": "输出完整 monospace 小票；价格区明确显示 PRICE: UNMAPPED 或 ESTIMATE: UNMAPPED，不虚构金额。",
+      "prompt": "模型叫 mystery-model，token 數據 input 1000 output 500，都要生成收據，但唔好亂計美元。",
+      "expected_output": "輸出完整 monospace 收據；價格區明確顯示 PRICE: UNMAPPED 或 ESTIMATE: UNMAPPED，唔虛構金額。",
       "files": [],
       "assertions": [
         {
-          "text": "未知模型仍然生成完整小票。"
+          "text": "未知模型仍然生成完整收據。"
         },
         {
-          "text": "价格区必须明确显示 UNMAPPED。"
+          "text": "價格區必須明確顯示 UNMAPPED。"
         },
         {
-          "text": "不得出现伪造的美元金额。"
+          "text": "唔可以出現偽造嘅美元金額。"
         },
         {
-          "text": "即使未知模型，也应该返回完整小票本体，而不是只摘录错误或金额摘要。"
+          "text": "即使係未知模型，都應該返回完整收據本體，而唔係只摘錄錯誤或者金額摘要。"
         }
       ]
     },
     {
       "id": 4,
-      "prompt": "用 Trae 风格生成 token 小票：input 12487、cache read 8742、output 3215，模型 gpt-5.4，顶部 logo 要和 Codex / Claude Code 属于同一级别的 Agent 工具品牌区。",
-      "expected_output": "输出 Trae 品牌方向的 monospace 小票，顶部使用 Trae 像素块 logo 和 TRAE 字标；THANK YOU FOR CODING WITH 仍按实际模型/供应商品牌显示，比如 gpt 模型显示 ChatGPT、GLM 显示 GLM、MiniMax 显示 MiniMax；明细和价格口径保持真实。",
+      "prompt": "用 Trae 風格生成 token 收據：input 12487、cache read 8742、output 3215，模型 gpt-5.4，頂部 logo 要同 Codex / Claude Code 屬於同一級別嘅 Agent 工具品牌區。",
+      "expected_output": "輸出 Trae 品牌方向嘅 monospace 收據，頂部使用 Trae 像素塊 logo 同 TRAE 字標；THANK YOU FOR CODING WITH 仍然按實際模型/供應商品牌顯示，例如 gpt 模型顯示 ChatGPT；明細同價格口徑保持真實。",
       "files": [],
       "assertions": [
         {
-          "text": "顶部必须出现 Trae logo 和 TRAE 字标，且字标居中在 logo 下方。"
+          "text": "頂部必須出現 Trae logo 同 TRAE 字標，而且字標喺 logo 下方置中。"
         },
         {
-          "text": "Trae 是 agent-tool logo，不得覆盖实际模型名称判断。"
+          "text": "Trae 係 agent-tool logo，唔可以覆蓋實際模型名稱判斷。"
         },
         {
-          "text": "仍然必须包含 ITEM/TOKENS、TOTAL、对应币种 ESTIMATE、条形码和 receipt id。"
+          "text": "仍然必須包含 ITEM/TOKENS、TOTAL、對應貨幣 ESTIMATE、條碼同 receipt id。"
         },
         {
-          "text": "默认聊天回复不应被额外说明文字打断，优先直接展示完整小票。"
+          "text": "預設聊天回覆唔應該畀額外說明文字打斷，優先直接展示完整收據。"
         }
       ]
     },
     {
       "id": 5,
-      "prompt": "把这次对话打成一张 token 小票，我想看这轮 context 和 token 消耗。",
-      "expected_output": "即使没有说 receipt，也应理解为触发 check-please，直接返回完整小票本体，而不是普通解释或表格。",
+      "prompt": "把這次對話打成一張 token 收據，我想睇呢輪 context 同 token 消耗。",
+      "expected_output": "即使冇講 receipt，都應該理解為觸發 check-please，直接返回完整收據本體，而唔係普通解釋或表格。",
       "files": [],
       "assertions": [
         {
-          "text": "“打成一张 token 小票”“看这轮 context 和 token 消耗”属于触发词，应调用 check-please。"
+          "text": "「打成一張 token 收據」「睇呢輪 context 同 token 消耗」屬於觸發詞，應該調用 check-please。"
         },
         {
-          "text": "返回应是完整 receipt-only 小票，而不是解释性 prose。"
+          "text": "返回應該係完整 receipt-only 收據，而唔係解釋性 prose。"
         }
       ]
     }

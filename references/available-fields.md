@@ -1,16 +1,16 @@
-# Check Please 可读字段口径
+# Check Please 可讀欄位口徑
 
-这个 Skill 的默认数据源是 Codex 本地 session JSONL，不是模型自己猜出来的数字。运行：
+呢個 Skill 嘅預設數據源係本地日誌（Claude transcripts / Codex session JSONL / OpenCode SQLite），唔係模型自己估出嚟嘅數字。運行：
 
 ```bash
 python3 scripts/check_please.py --show-fields
 ```
 
-可以查看当前选中 session 或手动参数里真实可用的字段。
+可以查看目前選中 session 或手動參數入面真實可用嘅欄位。
 
-## Codex JSONL 目前能读到
+## Codex JSONL 目前讀到
 
-来自 `event_msg.payload.type == "token_count"` 的 `info.last_token_usage` 或 `info.total_token_usage`：
+來自 `event_msg.payload.type == "token_count"` 嘅 `info.last_token_usage` 或 `info.total_token_usage`：
 
 - `input_tokens`
 - `cached_input_tokens`
@@ -18,41 +18,52 @@ python3 scripts/check_please.py --show-fields
 - `reasoning_output_tokens`
 - `total_tokens`
 
-来自同一个 `token_count.info`：
+來自同一個 `token_count.info`：
 
 - `model_context_window`
 
-来自 `session_meta.payload`、`turn_context.payload` 或调用参数：
+來自 `session_meta.payload`、`turn_context.payload` 或調用參數：
 
 - `model_provider`
 - `id`
 - `timestamp`
 - `model` / `model_id` / `model_name` / `model_slug`
-- `turn_context.model`，当 `session_meta` 没写模型时，Codex 日志里通常还能从这里补到当前回合模型
+- `turn_context.model`：當 `session_meta` 冇寫模型時，Codex 日誌通常仲可以由呢度補到當前回合嘅模型
 
-模型读取顺序是：`session_meta.model*` -> `turn_context.model` -> 调用参数 `--model`。前两者都没有时，小票才显示 `MODEL: UNRECORDED`。
+模型讀取順序係：`session_meta.model*` -> `turn_context.model` -> 調用參數 `--model`。前兩者都冇時，收據先顯示 `MODEL: UNRECORDED`。
 
-## 默认票面固定字段
+## Claude transcripts（`~/.claude/projects`）目前讀到
 
-为了让 Claude Code / Codex / Trae 三种 Agent 工具都能稳定支持，默认通用条目固定为：
+每條 assistant 訊息嘅 `message.usage`：
+
+- `input_tokens`（未命中 cache 嘅輸入）
+- `cache_read_input_tokens`
+- `cache_creation_input_tokens`
+- `output_tokens`
+
+連同 `message.model`、`sessionId`、`timestamp`。收據口徑入面 `Input Tokens` 會包埋 cache read/write。
+
+## 預設單面固定欄位
+
+為咗令各 Agent 工具都可以穩定支援，預設通用條目固定為：
 
 - `Input Tokens` <- `input_tokens`
 - `Output Tokens` <- `output_tokens`
 - `Cache Read Tokens` <- `cached_input_tokens`
 - `TOTAL` <- `total_tokens`
 
-这些条目只有字段真实存在时才打印；`TOTAL` 使用日志里的 `total_tokens`，手动模式中会由 input + output 兜底计算。
+呢啲條目只有欄位真實存在時先輸出；`TOTAL` 用日誌入面嘅 `total_tokens`，手動模式會由 input + output 補底計算。
 
-## 可选字段
+## 可選欄位
 
-以下字段已经固定为可选条目：有真实字段就显示，没有就省略。
+以下欄位已經固定為可選條目：有真實欄位就顯示，冇就略過。
 
 - `Reasoning Tokens` <- `reasoning_output_tokens`
-- `Cache Write Tokens` <- `cache_write_tokens` 或 Anthropic 的 `cache_creation_input_tokens`
+- `Cache Write Tokens` <- `cache_write_tokens` 或 Anthropic 嘅 `cache_creation_input_tokens`
 
-## 不打印
+## 唔輸出
 
-- `System Tokens`：当前 Codex `token_count` 事件没有独立字段。
-- `Tool Use Tokens`：当前 Codex `token_count` 事件没有独立字段。
+- `System Tokens`：目前 Codex `token_count` 事件冇獨立欄位。
+- `Tool Use Tokens`：目前 Codex `token_count` 事件冇獨立欄位。
 
-原则：真实可读字段优先；不可读字段不写；可选字段有就显示，没有就省略。
+原則：真實可讀欄位優先；不可讀欄位唔寫；可選欄位有就顯示，冇就略過。
